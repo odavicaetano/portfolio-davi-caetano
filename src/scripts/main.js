@@ -133,7 +133,6 @@ function caseHtml(p) {
       </header>
       <div class="case-cols"><div>${blocks}</div>${aside ? `<aside class="case-aside">${aside}</aside>` : ''}</div>
       ${gallery}
-      ${p.sources?.length ? `<p class="case-sources">Referências: ${p.sources.map(esc).join(' · ')}</p>` : ''}
     </div>`;
 }
 
