@@ -553,3 +553,72 @@ dialog { color: var(--text); }
 .hero-vision { background:#17181d; box-shadow:none; }
 .hero-vision-stage { background:#111216; }
 .hero-vision-orb { border-color:rgba(190,195,206,.26); background:repeating-linear-gradient(0deg,transparent 0 16px,rgba(190,195,206,.09) 17px 18px),repeating-linear-gradient(90deg,transparent 0 16px,rgba(190,195,206,.09) 17px 18px); box-shadow:none; }
+
+/* Refinamento editorial UX · novembro 2026
+   Hierarquia, ritmo, microinterações e responsividade sem efeitos invasivos. */
+:root { --ease-editorial:cubic-bezier(.2,.75,.25,1); --section-rhythm:clamp(4.75rem,8vw,8.5rem); }
+.section { padding-block:var(--section-rhythm); }
+.section-head { align-items:end; gap:clamp(1.5rem,4vw,3.5rem); margin-bottom:clamp(2rem,4vw,3.5rem); }
+.section-head .h2 { max-width:17ch; text-wrap:balance; }
+.section-note { max-width:42ch; line-height:1.8; }
+.about-layout { gap:clamp(2rem,6vw,6rem); align-items:start; }
+.about-layout p { text-wrap:pretty; }
+.hero { isolation:isolate; }
+.hero-text { padding-block:clamp(2.5rem,6vw,5rem); }
+.hero .display { text-wrap:nowrap; }
+.hero .lead { max-width:60ch; line-height:1.65; text-wrap:pretty; }
+.hero-actions { flex-wrap:wrap; gap:.85rem; }
+.hero-vision { transition:border-color .35s var(--ease-editorial), box-shadow .45s var(--ease-editorial); }
+.hero-vision:hover { border-color:rgba(200,204,220,.28); box-shadow:0 20px 65px rgba(0,0,0,.18); }
+.hero-vision-stage { background:#111216 !important; }
+.hero-vision-footer strong { letter-spacing:-.015em; }
+.project-card { position:relative; overflow:hidden; transition:transform .45s var(--ease-editorial),border-color .35s,box-shadow .45s var(--ease-editorial); }
+.project-card:hover { transform:translateY(-5px); border-color:rgba(190,195,210,.36); box-shadow:0 22px 65px rgba(0,0,0,.2); }
+.project-card .card-media img { transition:transform .7s var(--ease-editorial),filter .5s; }
+.project-card:hover .card-media img { transform:scale(1.035); }
+.project-card .card-title { line-height:1.2; text-wrap:balance; }
+.project-card .card-summary { line-height:1.7; text-wrap:pretty; }
+.project-card .card-body { display:flex; flex-direction:column; gap:.65rem; }
+.project-card .card-actions { margin-top:auto; }
+.btn,.chip,.link-action,.menu-toggle,.about-teaching { -webkit-tap-highlight-color:transparent; }
+.btn { transition:transform .28s var(--ease-editorial),background-color .28s,border-color .28s,box-shadow .28s; }
+.btn:hover { transform:translateY(-2px); }
+.btn:active,.chip:active { transform:scale(.98); }
+.about-teaching { overflow:hidden; transition:transform .4s var(--ease-editorial),border-color .3s; }
+.about-teaching:hover { transform:translateY(-3px); border-color:rgba(190,195,210,.35); }
+.about-teaching-image { overflow:hidden; }
+.about-teaching-image img { transition:transform .65s var(--ease-editorial); }
+.about-teaching:hover .about-teaching-image img { transform:scale(1.035); }
+.case-body { line-height:1.8; }
+.case-head h2 { text-wrap:balance; }
+.case-gallery .img-button { overflow:hidden; }
+.case-gallery img { transition:transform .6s var(--ease-editorial); }
+.case-gallery .img-button:hover img { transform:scale(1.025); }
+#helena-3d .statue-layout { border:0; }
+#helena-3d .statue-viewer { border-color:rgba(255,255,255,.14); }
+#helena-3d .helena-below { max-width:850px; margin:clamp(2rem,4vw,3.25rem) auto 0; }
+#helena-3d .helena-below .statue-info p { line-height:1.85; }
+#helena-3d .viewer-toolbar { gap:1rem; flex-wrap:wrap; }
+@media (hover:none) {
+ .project-card:hover,.about-teaching:hover,.btn:hover { transform:none; }
+ .project-card:hover .card-media img,.about-teaching:hover img { transform:none; }
+}
+@media(max-width:720px) {
+ :root { --section-rhythm:clamp(3.8rem,11vw,5rem); }
+ .container { width:min(1200px,calc(100% - 2rem)); }
+ .hero-text { padding-block:2rem 2.75rem; }
+ .hero .display { font-size:clamp(2.65rem,10.5vw,5.4rem); }
+ .hero .lead { line-height:1.7; }
+ .hero-actions .btn { justify-content:center; }
+ .hero-vision { max-width:none; }
+ .section-head { align-items:start; }
+ .section-head .h2 { max-width:none; }
+ .project-card { transform:none; }
+ .hero-vision-footer { align-items:start; }
+ .hero-vision-footer p { line-height:1.5; }
+ #helena-3d .viewer-toolbar { padding:.8rem; }
+ #helena-3d .helena-below { margin-top:2rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+ *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+}
