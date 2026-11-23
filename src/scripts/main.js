@@ -10,10 +10,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const m = (proj, id) => media[proj]?.[id];
 const objPos = { center: '50% 50%', top: '50% 0%', left: '0% 50%', right: '100% 50%' };
 function picture(md, alt, { eager = false } = {}) {
-  return `<picture>
-    <source srcset="${md.thumb}.webp" type="image/webp">
-    <img src="${md.thumb}.jpg" alt="${esc(alt)}" width="800" height="600" ${eager ? '' : 'loading="lazy"'} decoding="async" style="object-position:${objPos[md.pos] || '50% 50%'}">
-  </picture>`;
+  return md.thumb ? `<picture><source srcset="${md.thumb}.webp" type="image/webp"><img src="${md.thumb}.jpg" alt="${esc(alt)}" width="800" height="600" ${eager ? '' : 'loading="lazy"'} decoding="async" style="object-position:${objPos[md.pos] || '50% 50%'}"></picture>` : `<img src="${md.full}" alt="${esc(alt)}" ${eager ? '' : 'loading="lazy"'} decoding="async" style="object-position:${objPos[md.pos] || '50% 50%'}">`;
 }
 const galleryItems = p => p.gallery.map(([id, caption]) => ({ full: m(p.id, id).full, caption, alt: caption }));
 
