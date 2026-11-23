@@ -427,3 +427,28 @@ dialog { color: var(--text); }
  .case-gallery { gap: .85rem; }
  .case-body { gap: 2rem; }
 }
+
+/* Óculos como assinatura visual, sem moldura, sobreposição ou legenda */
+.hero-grid { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: clamp(0px,2vw,2rem); }
+.hero-glasses { border: 0 !important; border-radius: 0 !important; box-shadow: none !important; background: transparent !important; aspect-ratio: 1.2; overflow: visible; pointer-events: none; }
+.hero-glasses:hover { box-shadow: none !important; }
+.hero-glasses .viewer-canvas { inset: -12%; cursor: default; pointer-events: none; touch-action: auto; }
+.hero-glasses .viewer-fallback { object-fit: contain; mix-blend-mode: screen; }
+.hero-text { z-index: 2; }
+.hero-text .display { animation: hero-enter .8s both; }
+.hero-text .lead { animation: hero-enter .9s .12s both; }
+.hero-actions, .pillars { animation: hero-enter .9s .2s both; }
+@keyframes hero-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.project-card { animation: card-enter .65s both; }
+@keyframes card-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.project-card:nth-child(3n+2) { animation-delay: .07s; }
+.project-card:nth-child(3n+3) { animation-delay: .14s; }
+@media(max-width:1024px) {
+ .hero-grid { grid-template-columns: 1fr; }
+ .hero-glasses { width: min(80vw,450px); height: min(60vw,320px); aspect-ratio: auto; margin: -2.5rem auto 0; }
+}
+@media(max-width:720px) {
+ .hero { padding-bottom: 1.5rem; }
+ .hero-glasses { width: 90%; height: 220px; margin-top: -2rem; }
+}
+@media(prefers-reduced-motion:reduce) { .hero-text .display,.hero-text .lead,.hero-actions,.pillars,.project-card { animation: none !important; } }
