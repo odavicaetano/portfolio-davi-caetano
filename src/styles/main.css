@@ -700,3 +700,23 @@ dialog { color: var(--text); }
  .about-layout { gap:1.5rem; }
  .about-feature,.about-teaching { min-height:0; }
 }
+
+/* Cases: capa integral e fechamento sobreposto à própria fotografia */
+.case-dialog .case-shell { position:relative; }
+.case-dialog .case-close { position:absolute !important; top:clamp(.65rem,2vw,1.15rem); right:clamp(.65rem,2vw,1.15rem); left:auto; float:none !important; margin:0 !important; z-index:15; background:rgba(12,13,19,.88); border:1px solid rgba(255,255,255,.22); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+.case-dialog .case-hero { width:100%; height:auto !important; aspect-ratio:auto !important; overflow:hidden; background:#101116; }
+.case-dialog .case-hero > .img-button { display:block; width:100%; height:auto !important; aspect-ratio:auto !important; padding:0; border:0; }
+.case-dialog .case-hero > .img-button img { display:block; width:100%; height:auto !important; max-height:min(72dvh,780px); object-fit:contain !important; object-position:center center !important; }
+.case-dialog .case-hero:has(img[src*="estatua-angulos-modelo"]) { aspect-ratio:auto !important; }
+.case-dialog .case-hero:has(img[src*="estatua-angulos-modelo"]) img { object-fit:contain !important; object-position:center !important; }
+@media(max-width:720px) {
+ .case-dialog .case-close { top:.75rem; right:.75rem; }
+ .case-dialog .case-hero > .img-button img { max-height:58dvh; }
+}
+/* Navegação da galeria: deslocamento curto, com direção e respeito a movimento reduzido */
+@keyframes gallery-slide-next { from { opacity:.45; transform:translateX(22px) scale(.985); } to { opacity:1; transform:translateX(0) scale(1); } }
+@keyframes gallery-slide-prev { from { opacity:.45; transform:translateX(-22px) scale(.985); } to { opacity:1; transform:translateX(0) scale(1); } }
+@media(prefers-reduced-motion:no-preference) {
+ #lbImg.gallery-next.is-loaded { animation:gallery-slide-next .3s cubic-bezier(.2,.7,.2,1) both; }
+ #lbImg.gallery-prev.is-loaded { animation:gallery-slide-prev .3s cubic-bezier(.2,.7,.2,1) both; }
+}
