@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!-- Página auxiliar para gerar a imagem do card da Helena (captura com navegador headless). -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="../src/styles/main.css">
+<style>body{margin:0;background:#0a0a0c}#statue3DContainer{position:fixed;inset:0;min-height:0}.viewer-hint,.loader{display:none}</style></head>
+<body>
+<div id="statue3DContainer" class="viewer-canvas statue-canvas">
+  <div class="loader" id="statueLoader"><div class="loader-bar"><span id="statueProgress"></span></div><span id="statueLoaderText"></span></div>
+  <p class="viewer-hint" id="statueHint"></p>
+</div>
+<button id="statueReset" hidden></button>
+<script type="module">
+  import { init } from '../src/scripts/viewer-statue.js';
+  init(document.getElementById('statue3DContainer'));
+</script>
+</body></html>

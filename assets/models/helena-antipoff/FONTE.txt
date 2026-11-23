@@ -1,0 +1,3 @@
+Derivado de "Helena Antipoff.obj" (249983 vértices, 499995 triângulos).
+Versão web: 179997 triângulos (simplificação meshoptimizer), normais recalculadas, compressão EXT_meshopt_compression.
+O OBJ original referencia "material.mtl" e texturas PBR que não foram fornecidas; o site usa material neutro.

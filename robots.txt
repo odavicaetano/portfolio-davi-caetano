@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://odavicaetano.github.io/portfolio-davi-caetano/sitemap.xml
