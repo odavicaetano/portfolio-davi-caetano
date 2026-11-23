@@ -130,7 +130,7 @@ function caseHtml(p) {
       </header>
       <div class="case-cols"><div>${blocks}</div>${aside ? `<aside class="case-aside">${aside}</aside>` : ''}</div>
       ${gallery}
-      <p class="case-sources">Fontes: ${p.sources.map(esc).join(' · ')}</p>
+      ${p.sources?.length ? `<p class="case-sources">Referências: ${p.sources.map(esc).join(' · ')}</p>` : ''}
     </div>`;
 }
 
@@ -252,7 +252,7 @@ if (webglOk()) {
   $('#statueLoaderText').textContent = 'Seu navegador não oferece WebGL, necessário para o modelo 3D.';
 }
 function showFallback() {
-  $('#glassesHint').textContent = 'Imagem estática: o 3D não está disponível neste navegador.';
+  hero?.classList.add('is-static');
 }
 
 /* ---------- Início ---------- */
