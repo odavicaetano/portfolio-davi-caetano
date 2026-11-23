@@ -350,6 +350,10 @@ export default {
     }
   },
   "helena-3d": {
+    "angulos-modelo": {"full":"assets/images/helena-3d/estatua-angulos-modelo.jpg","w":1536,"h":988,"thumb":null,"pos":"center"},
+    "angulos-referencia": {"full":"assets/images/helena-3d/estatua-angulos-referencia.jpg","w":1536,"h":864,"thumb":null,"pos":"center"},
+    "memorial": {"full":"assets/images/helena-3d/memorial-estatua-original.jpg","w":1152,"h":1536,"thumb":null,"pos":"center"},
+
     "render": {
       "full": "assets/images/helena-3d/render.jpg",
       "w": 900,
