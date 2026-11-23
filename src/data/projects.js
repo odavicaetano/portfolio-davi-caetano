@@ -38,6 +38,23 @@ export const statusLabel = {
 
 export const projects = [
   {
+    id: 'helena-3d',
+    title: 'Helena Antipoff em 3D',
+    kicker: 'Fundação Helena Antipoff · Fab Lab FHA',
+    categories: ['3d'],
+    status: 'colaborativo',
+    period: '',
+    featured: true,
+    
+    summary: 'Reconstrução digital da estátua de Helena Antipoff, em projeto colaborativo com a FHA e o Fab Lab FHA. Explore a escultura digital interativa nesta página.',
+    cover: 'render',
+    gallery: [['render', 'Reconstrução tridimensional da estátua de Helena Antipoff.']],
+    sections: { contexto: 'Projeto colaborativo de preservação da memória de Helena Antipoff, desenvolvido ao longo de aproximadamente um ano com a Fundação Helena Antipoff e o Fab Lab FHA.', papel: 'Participação no processo de reconstrução digital da escultura, utilizando recursos de inteligência artificial e Blender em colaboração com a equipe.', processo: 'A escultura física serviu de referência para a reconstrução digital. O trabalho envolveu estudo da forma, refinamento do modelo tridimensional e preparação de uma experiência interativa para explorar a estátua de diferentes ângulos.', entregas: ['Reconstrução digital da estátua', 'Modelo 3D interativo para exploração no navegador'] },
+    tools: ['Blender', 'Inteligência artificial aplicada ao processo de modelagem'],
+    links: [],
+    sources: ['OBJ fornecido pelo autor', 'Participação da FHA e do Fab Lab FHA conforme briefing do autor (perfil do LinkedIn)'],
+  },
+  {
     id: 'reurb',
     title: 'REURB: o futuro tem endereço certo',
     kicker: 'Cohab Minas · ASCOM',
@@ -134,23 +151,6 @@ export const projects = [
       { label: 'Código', href: 'https://github.com/odavicaetano/RMS-Titanic-1912---Museu-virtual', kind: 'code' },
     ],
     sources: ['README e descrição do repositório', 'GitHub Pages aberto e testado em 22/11/2026'],
-  },
-  {
-    id: 'helena-3d',
-    title: 'Helena Antipoff em 3D',
-    kicker: 'Fundação Helena Antipoff · Fab Lab FHA',
-    categories: ['3d'],
-    status: 'colaborativo',
-    period: '',
-    featured: false,
-    anchor: '#helena-3d',
-    summary: 'Reconstrução digital da estátua de Helena Antipoff, em projeto colaborativo com a FHA e o Fab Lab FHA. Explore a escultura digital interativa nesta página.',
-    cover: null,
-    gallery: [],
-    sections: {},
-    tools: [],
-    links: [],
-    sources: ['OBJ fornecido pelo autor', 'Participação da FHA e do Fab Lab FHA conforme briefing do autor (perfil do LinkedIn)'],
   },
   {
     id: 'marca-cohab',
