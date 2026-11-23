@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Davi Caetano Portfólio Digital | Design, comunicação e tecnologia</title>
   <meta name="description" content="Portfólio de Davi Caetano: design gráfico e editorial, comunicação institucional, ferramentas web e experiências 3D.">
   <link rel="canonical" href="https://odavicaetano.github.io/portfolio-davi-caetano/">
-  <meta name="theme-color" content="#0a0a0c">
+  <meta name="theme-color" content="#08080b">
   <meta name="color-scheme" content="dark">
 
   <meta property="og:type" content="website">
@@ -30,6 +30,9 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
   <link rel="manifest" href="site.webmanifest">
 
+  <!-- Ativa as animações de entrada apenas quando há JavaScript; sem ele, tudo fica visível. -->
+  <script>document.documentElement.classList.add('js');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -39,10 +42,12 @@
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <header class="site-header" id="topo">
     <div class="container header-inner">
-      <a href="#inicio" class="brand">
+      <a href="#inicio" class="brand" aria-label="Davi Caetano, voltar ao início">
         <span class="monogram" aria-hidden="true">D</span>
         <span class="brand-text">
           <span class="brand-name">DAVI CAETANO</span>
@@ -56,8 +61,9 @@
           <li><a href="#trajetoria"><span class="num">03</span> Experiência</a></li>
           <li><a href="#contato"><span class="num">04</span> Contato</a></li>
         </ul>
+        <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
       </nav>
-      <a class="btn btn-ghost header-cta" href="#contato">Vamos conversar?</a>
+      <a class="btn btn-ghost header-cta" href="#contato"><span class="status-dot" aria-hidden="true"></span>Vamos conversar?</a>
       <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menu">
         <span></span><span></span><span></span>
       </button>
@@ -69,57 +75,120 @@
         <li><a href="#trajetoria"><span class="num">03</span> Experiência</a></li>
         <li><a href="#contato"><span class="num">04</span> Contato</a></li>
       </ul>
+      <a class="btn btn-primary mobile-cta" href="#contato">Vamos conversar?</a>
     </nav>
   </header>
 
   <main id="conteudo">
     <!-- INÍCIO -->
-    <section class="hero grid-bg" id="inicio" aria-labelledby="heroTitle">
-      <div class="glow glow-a" aria-hidden="true"></div>
-      <div class="glow glow-b" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <p class="badge"><span class="dot" aria-hidden="true"></span> Portfólio digital <span class="sep" aria-hidden="true">|</span> Belo Horizonte, MG</p>
-          <div class="hero-name-lockup"><h1 id="heroTitle" class="display">DAVI<br><span class="fade-text">CAETANO</span></h1></div>
-          <p class="lead">Sou designer gráfico e trabalho na interseção entre comunicação, criatividade e tecnologia. Transformo ideias em experiências visuais claras, úteis e com personalidade.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projetos">Ver projetos <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-            <a class="btn btn-ghost" href="#sobre">Quem sou eu</a>
-          </div>
-          <div class="hero-vision card">
-            <div class="hero-vision-header"><span class="mono small muted"><span class="vision-dot"></span> LABORATÓRIO CRIATIVO</span><span class="mono small muted">EXPERIÊNCIA 3D</span></div>
-            <div class="hero-vision-stage"><div class="hero-visual hero-glasses"><div id="hero3DContainer" class="viewer-canvas"><img class="viewer-fallback" src="assets/images/oculos/oculos-render.jpg" alt="Óculos tridimensional" width="900" height="900"></div></div></div>
-            <div class="hero-vision-footer"><div><strong>Por onde enxergo as ideias.</strong><p class="mono small muted">Arraste para explorar diferentes perspectivas.</p></div><span class="mono small muted">360°</span></div>
-          </div>
-          <ul class="pillars" aria-label="Áreas">
-            <li><span class="pill-dot a"></span>Design gráfico e editorial</li>
-            <li><span class="pill-dot b"></span>Comunicação institucional</li>
-            <li><span class="pill-dot c"></span>Web, 3D e interativos</li>
-          </ul>
+    <section class="hero" id="inicio" aria-labelledby="heroTitle">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid-lines"></div>
+        <div class="aurora aurora-a"></div>
+        <div class="aurora aurora-b"></div>
+        <div class="spotlight"></div>
+      </div>
+
+      <div class="container hero-layout">
+        <div class="hero-head">
+          <p class="badge hero-in" style="--d:0"><span class="dot" aria-hidden="true"></span> Portfólio digital <span class="sep" aria-hidden="true">/</span> Belo Horizonte, MG</p>
+
+          <h1 id="heroTitle" class="display" aria-label="Davi Caetano">
+            <span class="line" aria-hidden="true"><span class="line-inner" style="--d:1">DAVI</span></span>
+            <span class="line" aria-hidden="true"><span class="line-inner fade-text" style="--d:2">CAETANO</span></span>
+          </h1>
+
+          <figure class="hero-object hero-in" style="--d:3" aria-label="Óculos em 3D. Arraste para girar, toque duas vezes para um aceno.">
+            <div class="orbit orbit-1" aria-hidden="true"></div>
+            <div class="orbit orbit-2" aria-hidden="true"></div>
+            <div class="orbit orbit-3" aria-hidden="true"><span class="orbit-node"></span></div>
+            <div class="hero-object-glow" aria-hidden="true"></div>
+            <div class="hero-glasses">
+              <div id="hero3DContainer" class="viewer-canvas">
+                <img class="viewer-fallback" src="assets/images/oculos/oculos-render.jpg" alt="Óculos de Davi Caetano em renderização tridimensional" width="900" height="900" fetchpriority="high">
+              </div>
+            </div>
+            <span class="object-label label-tr mono" aria-hidden="true">360°</span>
+          </figure>
         </div>
 
+        <div class="hero-text">
+          <p class="kinetic hero-in" style="--d:3" aria-label="Design editorial, institucional, interativo e em 3D">
+            <span class="kinetic-fixed" aria-hidden="true">Design</span>
+            <span class="kinetic-window" aria-hidden="true">
+              <span class="kinetic-list" id="kineticList">
+                <span>editorial</span><span>institucional</span><span>interativo</span><span>em 3D</span><span>editorial</span>
+              </span>
+            </span>
+          </p>
+
+          <p class="lead hero-in" style="--d:4">Sou designer gráfico e trabalho na interseção entre comunicação, criatividade e tecnologia. Transformo ideias em experiências visuais claras, úteis e com personalidade.</p>
+
+          <div class="hero-actions hero-in" style="--d:5">
+            <a class="btn btn-primary magnetic" href="#projetos"><span>Ver projetos</span> <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a class="btn btn-ghost" href="#sobre">Quem sou eu</a>
+          </div>
+        </div>
+
+        <aside class="hero-aside hero-in" style="--d:5" aria-label="Destaques">
+          <div class="object-caption">
+            <span class="object-label mono"><span class="vision-dot" aria-hidden="true"></span>Laboratório criativo</span>
+            <strong>Por onde enxergo as ideias.</strong>
+            <span class="mono hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8m-8 0 3-3m-3 3 3 3m5-3-3-3m3 3-3 3"/></svg>Arraste os óculos para explorar outras perspectivas</span>
+          </div>
+          <a class="now-card" href="#trajetoria">
+            <span class="now-dot" aria-hidden="true"></span>
+            <span class="now-copy"><span class="mono">Atualmente</span><strong>Design gráfico na ASCOM · Cohab Minas</strong></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </aside>
+      </div>
+
+      <div class="container hero-foot hero-in" style="--d:6">
+        <ul class="pillars" aria-label="Áreas">
+          <li><span class="pill-dot a"></span>Design gráfico e editorial</li>
+          <li><span class="pill-dot b"></span>Comunicação institucional</li>
+          <li><span class="pill-dot c"></span>Web, 3D e interativos</li>
+        </ul>
+        <a class="scroll-cue" href="#sobre" aria-label="Rolar para Sobre mim"><span class="scroll-cue-track"><span></span></span><span class="mono">Role</span></a>
       </div>
     </section>
 
+    <!-- FAIXA DE DISCIPLINAS -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Identidade visual</span><i>✦</i><span>Design editorial</span><i>✦</i><span>Comunicação institucional</span><i>✦</i><span>Apresentações</span><i>✦</i><span>Experiências 3D</span><i>✦</i><span>Ferramentas web</span><i>✦</i><span>Audiovisual</span><i>✦</i><span>Educação</span><i>✦</i>
+        <span>Identidade visual</span><i>✦</i><span>Design editorial</span><i>✦</i><span>Comunicação institucional</span><i>✦</i><span>Apresentações</span><i>✦</i><span>Experiências 3D</span><i>✦</i><span>Ferramentas web</span><i>✦</i><span>Audiovisual</span><i>✦</i><span>Educação</span><i>✦</i>
+      </div>
+    </div>
+
     <!-- SOBRE MIM -->
-    <section class="section section-alt" id="sobre" aria-labelledby="sobreTitle">
+    <section class="section" id="sobre" aria-labelledby="sobreTitle">
+      <span class="section-index" aria-hidden="true">01</span>
       <div class="container about-layout">
-        <div>
-          <p class="eyebrow">01 // Prazer, sou eu</p>
-          <h2 class="h2" id="sobreTitle">Criatividade que encontra caminhos.</h2>
-          <p class="lead">Sou Davi Caetano, designer gráfico com experiência em comunicação institucional, projetos editoriais, conteúdo digital e experiências interativas.</p>
-          <p>Minha trajetória começou no design freelancer e ganhou novas perspectivas na indústria, na informática e na educação. Hoje, na Assessoria de Comunicação Social da Cohab Minas, desenvolvo soluções visuais que aproximam informação e pessoas.</p>
-          <p>Gosto de pensar além da peça final: entender o problema, organizar ideias e encontrar uma forma de comunicar que seja bonita, funcional e acessível.</p>
-          <div class="about-actions"><a class="btn btn-primary" href="#projetos">Conheça meus trabalhos</a><a class="btn btn-ghost" href="#trajetoria">Minha experiência</a></div>
+        <div class="about-copy">
+          <p class="eyebrow" data-reveal>01 <span class="eyebrow-line"></span> Prazer, sou eu</p>
+          <h2 class="h2" id="sobreTitle" data-reveal="lines">Criatividade que encontra <em>caminhos.</em></h2>
+          <p class="lead" data-reveal>Sou Davi Caetano, designer gráfico com experiência em comunicação institucional, projetos editoriais, conteúdo digital e experiências interativas.</p>
+          <p data-reveal>Minha trajetória começou no design freelancer e ganhou novas perspectivas na indústria, na informática e na educação. Hoje, na Assessoria de Comunicação Social da Cohab Minas, desenvolvo soluções visuais que aproximam informação e pessoas.</p>
+          <p data-reveal>Gosto de pensar além da peça final: entender o problema, organizar ideias e encontrar uma forma de comunicar que seja bonita, funcional e acessível.</p>
+
+          <dl class="stats" data-reveal="stagger">
+            <div><dt>Criando desde</dt><dd><span class="count-up" data-to="2016" data-from="2000">2016</span></dd></div>
+            <div><dt>Projetos neste portfólio</dt><dd><span class="count-up" id="projectCount" data-to="9">9</span></dd></div>
+            <div><dt>Palestras sobre criatividade e IA</dt><dd><span class="count-up" data-to="2">2</span></dd></div>
+          </dl>
+
+          <div class="about-actions" data-reveal><a class="btn btn-primary magnetic" href="#projetos"><span>Conheça meus trabalhos</span></a><a class="btn btn-ghost" href="#trajetoria">Minha experiência</a></div>
         </div>
-        <aside class="about-feature" aria-label="Aulas e palestras em destaque">
+        <aside class="about-feature" aria-label="Aulas e palestras em destaque" data-reveal>
           <a class="about-teaching card" href="#/projeto/docencia" data-case="docencia" aria-label="Conhecer minhas aulas e palestras">
-            <div class="about-teaching-image" id="teachingPreview"></div>
+            <div class="about-teaching-image" id="teachingPreview"><span class="teaching-sticker mono" aria-hidden="true">Ao vivo no palco</span></div>
             <div class="about-teaching-copy">
               <span class="mono small muted">ALÉM DO DESIGN</span>
               <h3>Aulas, palestras e troca de ideias</h3>
               <p>Compartilhar conhecimento também faz parte da minha trajetória. Conheça minhas experiências com educação, criatividade e tecnologia.</p>
-              <span class="about-teaching-link">Conhecer essa experiência <span aria-hidden="true">↗</span></span>
+              <span class="about-teaching-link">Conhecer essa experiência <span class="arrow" aria-hidden="true">↗</span></span>
             </div>
           </a>
         </aside>
@@ -128,20 +197,21 @@
 
     <!-- HELENA ANTIPOFF 3D -->
     <section class="section section-alt" id="helena-3d" aria-labelledby="helenaTitle">
+      <span class="giant-outline" aria-hidden="true">3D</span>
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow accent-neon">Em destaque // Experiência interativa</p>
-            <h2 id="helenaTitle" class="h2">Helena Antipoff em 3D</h2>
-            <p class="mono muted small">Preservação digital · Projeto colaborativo</p>
+            <p class="eyebrow accent-neon" data-reveal>Em destaque <span class="eyebrow-line"></span> Experiência interativa</p>
+            <h2 id="helenaTitle" class="h2" data-reveal="lines">Helena Antipoff em <em>3D</em></h2>
+            <p class="mono muted small head-meta" data-reveal>Preservação digital · Projeto colaborativo</p>
           </div>
-          <p class="section-note">Um ano de trabalho colaborativo com a Fundação Helena Antipoff e o Fab Lab FHA para reconstruir digitalmente a escultura, combinando Blender e recursos de inteligência artificial.</p>
+          <p class="section-note" data-reveal>Um ano de trabalho colaborativo com a Fundação Helena Antipoff e o Fab Lab FHA para reconstruir digitalmente a escultura, combinando Blender e recursos de inteligência artificial.</p>
         </div>
 
         <div class="statue-layout">
-          <div class="card statue-viewer">
+          <div class="statue-viewer" data-reveal="scale">
             <div class="viewer-toolbar">
-              <span class="mono small muted">Explore a escultura</span>
+              <span class="mono small muted"><span class="live" aria-hidden="true"></span>Explore a escultura</span>
               <div class="mode-group" role="group" aria-label="Modo de visualização">
                 <button class="chip is-active" data-mode="solid" aria-pressed="true">Sólido</button>
                 <button class="chip" data-mode="wireframe" aria-pressed="false">Malha</button>
@@ -152,6 +222,7 @@
               </div>
             </div>
             <div id="statue3DContainer" class="viewer-canvas statue-canvas" role="img" aria-label="Modelo 3D da estátua de Helena Antipoff. Arraste para girar, use a roda do mouse ou o gesto de pinça para aproximar.">
+              <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
               <div class="loader" id="statueLoader" aria-live="polite">
                 <div class="loader-bar"><span id="statueProgress"></span></div>
                 <span class="mono small" id="statueLoaderText">O modelo carrega quando esta seção aparecer.</span>
@@ -160,33 +231,37 @@
             </div>
           </div>
 
-        </div>
-        <div class="helena-below">          <div class="statue-info">
-            <div class="card pad">
-              <h3 class="h3">Da escultura ao modelo digital</h3>
-              <p>Uma estátua guarda memória, mas não vai a todos os lugares. O modelo 3D permite girar, aproximar e estudar a forma de Helena Antipoff de qualquer tela, e abre caminho para exibições digitais e reproduções.</p>
-              <p>Explore a escultura de diferentes ângulos e descubra detalhes que nem sempre são perceptíveis em uma fotografia.</p>
-              <p>O processo de aproximadamente um ano combinou referências da escultura original, recursos de inteligência artificial e modelagem no Blender, em colaboração com a Fundação Helena Antipoff e o Fab Lab FHA.</p>
-            </div>
-            
+          <div class="statue-info">
+            <h3 class="h3" data-reveal>Da escultura ao modelo digital</h3>
+            <p data-reveal>Uma estátua guarda memória, mas não vai a todos os lugares. O modelo 3D permite girar, aproximar e estudar a forma de Helena Antipoff de qualquer tela, e abre caminho para exibições digitais e reproduções.</p>
+            <p data-reveal>Explore a escultura de diferentes ângulos e descubra detalhes que nem sempre são perceptíveis em uma fotografia.</p>
+            <p data-reveal>O processo de aproximadamente um ano combinou referências da escultura original, recursos de inteligência artificial e modelagem no Blender, em colaboração com a Fundação Helena Antipoff e o Fab Lab FHA.</p>
+            <ul class="process" aria-label="Etapas do processo" data-reveal="stagger">
+              <li><span class="mono">01</span>Fotografias de referência</li>
+              <li><span class="mono">02</span>Inteligência artificial</li>
+              <li><span class="mono">03</span>Refinamento no Blender</li>
+              <li><span class="mono">04</span>Modelo no navegador</li>
+            </ul>
+            <a class="btn btn-primary magnetic" href="#/projeto/helena-3d" data-case="helena-3d" data-reveal><span>Conheça o projeto</span> <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </div>
-
-          <a class="btn btn-primary" href="#/projeto/helena-3d" data-case="helena-3d">Conheça o projeto</a>
         </div>
       </div>
     </section>
 
     <!-- PROJETOS -->
     <section class="section" id="projetos" aria-labelledby="projTitle">
+      <span class="section-index" aria-hidden="true">02</span>
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow">02 // Trabalhos</p>
-            <h2 id="projTitle" class="h2">Projetos selecionados</h2>
+            <p class="eyebrow" data-reveal>02 <span class="eyebrow-line"></span> Trabalhos</p>
+            <h2 id="projTitle" class="h2" data-reveal="lines">Projetos <em>selecionados</em></h2>
           </div>
-          <p class="section-note">Escolha um projeto para conhecer a história, explorar as imagens e descobrir o resultado.</p>
+          <p class="section-note" data-reveal>Escolha um projeto para conhecer a história, explorar as imagens e descobrir o resultado.</p>
         </div>
-        <div class="filters" role="toolbar" aria-label="Filtrar projetos" id="projectFilters"></div>
+        <div class="filters-wrap" data-reveal>
+          <div class="filters" role="toolbar" aria-label="Filtrar projetos" id="projectFilters"></div>
+        </div>
         <p class="sr-only" aria-live="polite" id="filterStatus"></p>
         <div class="projects-grid" id="projectsGrid"></div>
         <p class="empty-state" id="emptyState" hidden>Nenhum projeto nesta categoria por enquanto.</p>
@@ -194,104 +269,114 @@
     </section>
 
     <!-- TRAJETÓRIA -->
-    <section class="section" id="trajetoria" aria-labelledby="trajTitle">
+    <section class="section section-alt" id="trajetoria" aria-labelledby="trajTitle">
+      <span class="section-index" aria-hidden="true">03</span>
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow">03 // Experiência</p>
-            <h2 id="trajTitle" class="h2">Onde construí minha trajetória</h2>
+            <p class="eyebrow" data-reveal>03 <span class="eyebrow-line"></span> Experiência</p>
+            <h2 id="trajTitle" class="h2" data-reveal="lines">Onde construí minha <em>trajetória</em></h2>
           </div>
-          <p class="section-note">Minha experiência reúne design gráfico, comunicação institucional, educação e tecnologia. Conheça os lugares e projetos que fazem parte dessa trajetória.</p>
+          <p class="section-note" data-reveal>Minha experiência reúne design gráfico, comunicação institucional, educação e tecnologia. Conheça os lugares e projetos que fazem parte dessa trajetória.</p>
         </div>
 
         <div class="traj-layout">
-          <ol class="timeline" aria-label="Experiência profissional">
-            <li class="tl-item">
-              <p class="tl-date mono">Abr. 2026 a hoje</p>
+          <ol class="timeline" id="timeline" aria-label="Experiência profissional">
+            <li class="tl-progress" aria-hidden="true"><span id="tlProgress"></span></li>
+            <li class="tl-item" data-reveal>
+              <p class="tl-date mono"><span class="tl-now">Atual</span> Abr. 2026 a hoje</p>
               <h3 class="h3">Cohab Minas</h3>
               <p class="tl-role mono">Design Gráfico · ASCOM, Assessoria de Comunicação Social</p>
               <p>Materiais editoriais e institucionais, apresentações, campanhas internas e ferramentas para a comunicação da companhia, como o projeto REURB.</p>
             </li>
-            <li class="tl-item">
+            <li class="tl-item" data-reveal>
               <p class="tl-date mono">Mar. a jul. 2026</p>
               <h3 class="h3">PRONATEC</h3>
               <p class="tl-role mono">Professor · Técnico em Multimídia</p>
               <p>Aulas práticas de imagem, vídeo e áudio e acompanhamento dos projetos da turma.</p>
             </li>
-            <li class="tl-item">
+            <li class="tl-item" data-reveal>
               <p class="tl-date mono">Nov. 2023 a abr. 2026</p>
               <h3 class="h3">Fundação Helena Antipoff</h3>
               <p class="tl-role mono">Comunicação · Informática · Eventos</p>
               <p>Atuação em informática, assessoria de comunicação e produção de eventos, com criação de conteúdo, suporte audiovisual e experiências digitais.</p>
             </li>
-            <li class="tl-item">
-              <p class="tl-date mono">Fev. 2016 a mar. 2022</p>
-              <h3 class="h3">Design gráfico freelancer</h3>
-              <p class="tl-role mono">Identidade visual · Conteúdo · Materiais gráficos</p>
-              <p>Projetos de identidade visual, peças para redes sociais, materiais impressos e digitais, apresentações e tratamento de imagens para diferentes clientes.</p>
-            </li>
-            <li class="tl-item">
+            <li class="tl-item" data-reveal>
               <p class="tl-date mono">Jun. 2022 a jun. 2023</p>
               <h3 class="h3">Jabil do Brasil</h3>
               <p class="tl-role mono">Técnico de Processos</p>
               <p>Estudo de tempos, melhoria de layout e fluxo produtivo. Certificação interna Lean Bronze.</p>
             </li>
+            <li class="tl-item" data-reveal>
+              <p class="tl-date mono">Fev. 2016 a mar. 2022</p>
+              <h3 class="h3">Design gráfico freelancer</h3>
+              <p class="tl-role mono">Identidade visual · Conteúdo · Materiais gráficos</p>
+              <p>Projetos de identidade visual, peças para redes sociais, materiais impressos e digitais, apresentações e tratamento de imagens para diferentes clientes.</p>
+            </li>
           </ol>
 
           <div class="traj-side">
-            <div class="card pad">
-              <h3 class="h3">Formação</h3>
+            <div class="card pad side-card" data-reveal>
+              <h3 class="h3"><span class="side-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span>Formação</h3>
               <ul class="plain-list">
-                <li><strong>Tecnologia em Design Gráfico</strong><span class="muted">UNOPAR · 2024 a 2025, conforme LinkedIn</span></li>
+                <li><strong>Tecnologia em Design Gráfico</strong><span class="muted">UNOPAR · 2024 a 2025</span></li>
                 <li><strong>Técnico em Informática</strong><span class="muted">Fundação Helena Antipoff · 2023 a 2024</span></li>
                 <li><strong>FIC Organizador de Eventos</strong><span class="muted">PRONATEC · concluído</span></li>
               </ul>
             </div>
-            <div class="card pad">
-              <h3 class="h3">Áreas e ferramentas</h3>
+            <div class="card pad side-card" data-reveal>
+              <h3 class="h3"><span class="side-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/></svg></span>Áreas e ferramentas</h3>
+              <p class="tool-group mono">Design</p>
               <ul class="tool-cloud">
                 <li>Photoshop</li><li>Illustrator</li><li>InDesign</li><li>PowerPoint</li><li>Affinity</li><li>Premiere Pro</li><li>CapCut</li>
+              </ul>
+              <p class="tool-group mono">Código</p>
+              <ul class="tool-cloud">
                 <li>HTML</li><li>CSS</li><li>JavaScript</li><li>three.js</li><li>React</li><li>TypeScript</li>
               </ul>
             </div>
-            
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONTATO -->
-    <section class="section contact grid-bg" id="contato" aria-labelledby="contactTitle">
+    <section class="section contact" id="contato" aria-labelledby="contactTitle">
+      <div class="contact-bg" aria-hidden="true"><div class="contact-ring r1"></div><div class="contact-ring r2"></div><div class="contact-ring r3"></div></div>
       <div class="container contact-inner">
-        <p class="eyebrow">04 // Contato</p>
-        <h2 id="contactTitle" class="display display-sm">Vamos conversar?</h2>
-        <p class="lead">Tem um projeto, uma ideia ou uma oportunidade? Escreva, e eu respondo.</p>
-        <div class="contact-actions">
-          <button class="btn btn-primary" id="copyEmail" data-email="davi27.caetano@gmail.com">
+        <p class="eyebrow" data-reveal>04 <span class="eyebrow-line"></span> Contato</p>
+        <h2 id="contactTitle" class="display display-sm" data-reveal="lines">Vamos <span class="shine">conversar?</span></h2>
+        <p class="lead" data-reveal>Tem um projeto, uma ideia ou uma oportunidade? Escreva, e eu respondo.</p>
+        <div class="contact-actions" data-reveal>
+          <button class="btn btn-mail magnetic" id="copyEmail" data-email="davi27.caetano@gmail.com" aria-describedby="copyHint">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg>
-            davi27.caetano@gmail.com
+            <span>davi27.caetano@gmail.com</span>
+            <span class="copy-chip mono" id="copyHint" aria-hidden="true">Copiar</span>
           </button>
           <a class="btn btn-ghost" href="mailto:davi27.caetano@gmail.com">Abrir no e-mail</a>
         </div>
-        <ul class="social">
-          <li><a href="https://www.linkedin.com/in/davicaetanosilva/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (abre em nova aba)</span></a></li>
-          <li><a href="https://www.behance.net/davicaetano1" target="_blank" rel="noopener">Behance<span class="sr-only"> (abre em nova aba)</span></a></li>
-          <li><a href="https://github.com/odavicaetano" target="_blank" rel="noopener">GitHub<span class="sr-only"> (abre em nova aba)</span></a></li>
+        <ul class="social" data-reveal="stagger">
+          <li><a href="https://www.linkedin.com/in/davicaetanosilva/" target="_blank" rel="noopener"><span>LinkedIn</span><span class="arrow" aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a></li>
+          <li><a href="https://www.behance.net/davicaetano1" target="_blank" rel="noopener"><span>Behance</span><span class="arrow" aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a></li>
+          <li><a href="https://github.com/odavicaetano" target="_blank" rel="noopener"><span>GitHub</span><span class="arrow" aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a></li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
+    <div class="footer-word" aria-hidden="true">DAVI CAETANO</div>
     <div class="container footer-inner mono small">
       <p>© 2026 Davi Caetano. Imagens e marcas pertencem aos seus titulares.</p>
       <p class="muted footer-joke">Design, comunicação e criatividade.</p>
+      <a class="footer-top" href="#inicio">Voltar ao topo ↑</a>
     </div>
   </footer>
 
   <a href="#inicio" class="to-top" id="toTop" aria-label="Voltar ao topo" hidden>
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
   </a>
+  <div class="cursor-label mono" id="cursorLabel" aria-hidden="true">Ver case</div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- Case de projeto -->
@@ -327,5 +412,3 @@
   <noscript><p class="noscript">Os projetos, os modelos 3D e a galeria precisam de JavaScript. O conteúdo de trajetória e contato continua disponível.</p></noscript>
 </body>
 </html>
-
-
