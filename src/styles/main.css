@@ -452,3 +452,24 @@ dialog { color: var(--text); }
  .hero-glasses { width: 90%; height: 220px; margin-top: -2rem; }
 }
 @media(prefers-reduced-motion:reduce) { .hero-text .display,.hero-text .lead,.hero-actions,.pillars,.project-card { animation: none !important; } }
+
+/* Destaque de docência junto à apresentação pessoal */
+.about-feature { min-width: 0; }
+.about-teaching { display: block; overflow: hidden; color: inherit; text-decoration: none; transition: transform .35s var(--ease),border-color .35s; }
+.about-teaching:hover { transform: translateY(-5px); border-color: var(--accent); }
+.about-teaching-image { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); }
+.about-teaching-image picture, .about-teaching-image img { display: block; width: 100%; height: 100%; }
+.about-teaching-image img { object-fit: cover; transition: transform .6s var(--ease); }
+.about-teaching:hover .about-teaching-image img { transform: scale(1.04); }
+.about-teaching-copy { padding: clamp(1.4rem,2.5vw,2rem); }
+.about-teaching-copy h3 { font: 700 clamp(1.35rem,2vw,1.85rem)/1.2 var(--font-display); color: #fff; margin: .9rem 0 1rem; text-wrap: balance; }
+.about-teaching-copy p { color: #b9bfcb; font-size: .92rem; line-height: 1.75; margin-bottom: 1.5rem; }
+.about-teaching-link { color: #c7c9ff; font: 600 .8rem var(--font-mono); }
+.about-teaching-link span { margin-left: .35rem; }
+/* Capas 16:9 ocupam toda a área do cartão, sem barras ou margens internas */
+.project-card .card-media, .project-card.is-featured .card-media { aspect-ratio: 16 / 9; width: 100%; align-self: stretch; }
+.project-card .card-media .img-button, .project-card .card-media picture { display: block; width: 100%; height: 100%; }
+.project-card .card-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.project-card.is-featured { align-items: stretch; }
+@media (max-width:800px) { .about-feature { width: 100%; } }
+@media (prefers-reduced-motion:reduce) { .about-teaching,.about-teaching-image img { transition: none; } }
