@@ -46,10 +46,10 @@ export const projects = [
     period: '',
     featured: true,
     
-    summary: 'Reconstrução digital da estátua de Helena Antipoff, em projeto colaborativo com a FHA e o Fab Lab FHA. Explore a escultura digital interativa nesta página.',
+    summary: 'Do memorial físico à reconstrução digital: um projeto de aproximadamente um ano dedicado à preservação da memória de Helena Antipoff.',
     cover: 'render',
     gallery: [['render', 'Reconstrução tridimensional da estátua de Helena Antipoff.']],
-    sections: { contexto: 'Projeto colaborativo de preservação da memória de Helena Antipoff, desenvolvido ao longo de aproximadamente um ano com a Fundação Helena Antipoff e o Fab Lab FHA.', papel: 'Participação no processo de reconstrução digital da escultura, utilizando recursos de inteligência artificial e Blender em colaboração com a equipe.', processo: 'A escultura física serviu de referência para a reconstrução digital. O trabalho envolveu estudo da forma, refinamento do modelo tridimensional e preparação de uma experiência interativa para explorar a estátua de diferentes ângulos.', entregas: ['Reconstrução digital da estátua', 'Modelo 3D interativo para exploração no navegador'] },
+    sections: { contexto: 'A escultura de Helena Antipoff integra um memorial em área ajardinada da Fundação Helena Antipoff. O projeto buscou preservar e ampliar o acesso a esse patrimônio por meio de uma reconstrução digital, desenvolvida ao longo de aproximadamente um ano com a FHA e o Fab Lab FHA.', papel: 'Participação no processo de reconstrução digital da escultura, utilizando recursos de inteligência artificial e Blender em colaboração com a equipe.', processo: 'Fotografias da estátua original, incluindo vistas frontal, posterior e laterais, serviram como referência para observar proporções, vestimenta e detalhes da escultura. O trabalho combinou recursos de inteligência artificial, modelagem e refinamento no Blender até chegar a um modelo explorável no navegador.', entregas: ['Reconstrução digital da estátua', 'Modelo 3D interativo para exploração no navegador'] },
     tools: ['Blender', 'Inteligência artificial aplicada ao processo de modelagem'],
     links: [],
     sources: ['OBJ fornecido pelo autor', 'Participação da FHA e do Fab Lab FHA conforme briefing do autor (perfil do LinkedIn)'],
