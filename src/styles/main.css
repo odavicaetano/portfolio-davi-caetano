@@ -39,7 +39,7 @@
 
   --radius: 22px;
   --radius-sm: 12px;
-  --section: clamp(5.5rem, 3.5rem + 7vw, 10rem);
+  --section: clamp(4.25rem, 2.75rem + 5vw, 7.5rem);
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
   --header-h: 76px;
   --ease: cubic-bezier(.22, .8, .24, 1);
@@ -671,7 +671,7 @@ dialog { color: var(--text); }
   .case-aside { position: static; }
 }
 @media (max-width: 760px) {
-  :root { --header-h: 68px; --section: clamp(4.25rem, 12vw, 5.5rem); }
+  :root { --header-h: 68px; --section: clamp(3.25rem, 9vw, 4.25rem); }
   .site-header.is-scrolled { --header-h: 60px; }
   .hero { min-height: auto; padding-top: calc(var(--header-h) + 2rem); }
   .hero-head { --name: 12.1cqi; }
