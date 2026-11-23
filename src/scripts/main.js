@@ -359,6 +359,11 @@ function splitWords(el) {
           wi.textContent = part; w.append(wi); frag.append(w);
         });
         child.replaceWith(frag);
+      } else if (child.nodeType === 1 && (child.tagName === 'EM' || child.classList.contains('shine'))) {
+        // Texto em degradê sobe inteiro: dividido em palavras, o navegador o esconde durante o movimento.
+        const w = document.createElement('span'); w.className = 'w';
+        const wi = document.createElement('span'); wi.className = 'wi'; wi.style.setProperty('--i', i++);
+        child.replaceWith(w); wi.append(child); w.append(wi);
       } else if (child.nodeType === 1) walk(child);
     });
   };
