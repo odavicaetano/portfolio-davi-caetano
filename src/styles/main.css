@@ -541,3 +541,15 @@ dialog { color: var(--text); }
 .helena-below .statue-info { width:100%; }
 .helena-below .btn { margin-top:1.25rem; }
 @media(max-width:720px) { .hero-vision { margin:1.5rem 0; } .hero-vision-stage { height:300px; } .hero-vision-header,.hero-vision-footer { padding:.8rem 1rem; } #helena-3d .statue-canvas { min-height:440px; } }
+
+/* Helena: superfície neutra, sem bordas coloridas ou respiros internos artificiais */
+#helena-3d .statue-layout { margin:0; padding:0; gap:0; }
+#helena-3d .statue-viewer { margin:0; padding:0; border-radius:0; border:1px solid var(--border,rgba(255,255,255,.13)); background:transparent; box-shadow:none; }
+#helena-3d .viewer-toolbar { border-bottom:1px solid rgba(255,255,255,.12); background:transparent; }
+#helena-3d .statue-canvas { margin:0; padding:0; border:0; border-radius:0; background:#111216; }
+#helena-3d .helena-below { max-width:none; margin:1.5rem 0 0; }
+#helena-3d .helena-below .card { border:0; border-radius:0; padding:0; background:transparent; box-shadow:none; }
+#helena-3d .helena-below .btn { margin-top:1.25rem; }
+.hero-vision { background:#17181d; box-shadow:none; }
+.hero-vision-stage { background:#111216; }
+.hero-vision-orb { border-color:rgba(190,195,206,.26); background:repeating-linear-gradient(0deg,transparent 0 16px,rgba(190,195,206,.09) 17px 18px),repeating-linear-gradient(90deg,transparent 0 16px,rgba(190,195,206,.09) 17px 18px); box-shadow:none; }
