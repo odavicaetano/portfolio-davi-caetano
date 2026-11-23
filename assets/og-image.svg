@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0d0e16"/><stop offset="1" stop-color="#090a0e"/></linearGradient><linearGradient id="word" x2="0" y2="0" x1="0" y1="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#9ca0b7"/></linearGradient><linearGradient id="logo" x2="0" y2="1"><stop stop-color="#6867ef"/><stop offset="1" stop-color="#04d4eb"/></linearGradient><pattern id="grid" width="66" height="66" patternUnits="userSpaceOnUse"><path d="M66 0H0V66" fill="none" stroke="#252733" stroke-width="1"/></pattern></defs>
+<rect width="1200" height="630" fill="url(#bg)"/><rect width="1200" height="630" fill="url(#grid)"/>
+<circle cx="190" cy="425" r="280" fill="#32305e" opacity=".09"/><circle cx="1080" cy="520" r="240" fill="#04d4eb" opacity=".045"/>
+<rect x="64" y="56" width="66" height="66" rx="18" fill="url(#logo)"/><text x="82" y="103" font-family="DejaVu Sans, sans-serif" font-size="48" font-weight="bold" fill="#0a0a0c">D</text>
+<text x="151" y="81" font-family="DejaVu Sans, sans-serif" font-size="26" font-weight="bold" letter-spacing="4" fill="#ffffff">DAVI CAETANO</text>
+<text x="151" y="108" font-family="DejaVu Sans, sans-serif" font-size="15" letter-spacing="3" fill="#a4a8b6">DESIGN · COMUNICAÇÃO · TECNOLOGIA</text>
+<rect x="65" y="182" width="350" height="42" rx="21" fill="#171820" stroke="#353643"/>
+<circle cx="88" cy="203" r="6" fill="#6a67ed"/><text x="109" y="209" font-family="DejaVu Sans Mono, monospace" font-size="17" letter-spacing="1.5" fill="#d4d6e2">PORTFÓLIO DIGITAL</text>
+<text x="59" y="361" font-family="DejaVu Sans, sans-serif" font-size="138" font-weight="bold" letter-spacing="-9" fill="#ffffff">DAVI</text>
+<text x="59" y="486" font-family="DejaVu Sans, sans-serif" font-size="133" font-weight="bold" letter-spacing="-9" fill="url(#word)">CAETANO</text>
+<text x="66" y="549" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#c3c5d2">Criatividade, comunicação e experiências digitais.</text>
+<path d="M65 586H1135" stroke="#41424f" stroke-width="1"/><text x="66" y="609" font-family="DejaVu Sans Mono, monospace" font-size="13" fill="#9196a6">odavicaetano.github.io/portfolio-davi-caetano</text>
+</svg>
