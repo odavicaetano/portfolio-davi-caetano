@@ -38,7 +38,7 @@ Qualquer servidor estático serve (o site usa módulos JavaScript, então abrir 
 |---|---|
 | `node tools/build-models.mjs "<pasta-dos-anexos>"` | Converte os OBJ originais em GLB otimizados. |
 | `node tools/build-images.mjs "<pasta-dos-anexos>"` | Gera miniaturas e versões ampliadas. |
-| `node tools/build-brand.mjs` | Gera `favicon.ico`, ícones PNG, capa social e a imagem de reserva dos óculos. |
+| `node tools/build-brand.mjs` | Gera `favicon.ico`, ícones PNG e a imagem de reserva dos óculos. A capa de compartilhamento (`assets/og-image.jpg`) é mantida à mão e não é alterada. |
 | `npm run build:vendor` | Recria o pacote mínimo do three.js. |
 
 As fontes (`media-src/`, OBJ originais) ficam fora do repositório.

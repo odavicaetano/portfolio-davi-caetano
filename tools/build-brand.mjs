@@ -1,5 +1,6 @@
-// Gera favicon.ico, ícones PNG e a capa social (Open Graph) a partir de favicon.svg.
-// Uso: node tools/build-brand.mjs  (rode depois de build-images.mjs)
+// Gera favicon.ico e os ícones PNG a partir de favicon.svg, e a imagem de reserva dos óculos.
+// A capa de compartilhamento (assets/og-image.jpg) é feita e mantida à mão pelo autor: este script não a altera.
+// Uso: node tools/build-brand.mjs
 import sharp from 'sharp';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 
@@ -22,41 +23,9 @@ sizes.forEach((s, i) => {
 });
 writeFileSync('favicon.ico', Buffer.concat([header, ...pngs]));
 
-// Capa social 1200x630: monograma, nome, eixo e uma miniatura do próprio site (se existir).
-const W = 1200, H = 630;
-const bg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
-  <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.05"/>
-    </pattern>
-    <radialGradient id="glow" cx="0.15" cy="0.2" r="0.7">
-      <stop offset="0" stop-color="#6366f1" stop-opacity="0.35"/><stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="100%" height="100%" fill="#0a0a0c"/>
-  <rect width="100%" height="100%" fill="url(#grid)"/>
-  <rect width="100%" height="100%" fill="url(#glow)"/>
-  <g transform="translate(72 72) scale(1.25)">${svg.toString().replace(/<\/?svg[^>]*>/g, '')}</g>
-  <text x="72" y="300" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="88" fill="#ffffff">DAVI</text>
-  <text x="72" y="392" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="88" fill="#c7cbe0">CAETANO</text>
-  <text x="74" y="458" font-family="Consolas, monospace" font-size="19" fill="#00f2fe" letter-spacing="2">DESIGN · COMUNICAÇÃO · TECNOLOGIA</text>
-  <text x="74" y="560" font-family="Arial, sans-serif" font-size="24" fill="#9ca3af">Davi Caetano Portfólio Digital</text>
-</svg>`);
-const layers = [];
-try {
-  const shot = await sharp('media-src/capturas/portfolio.png').resize(520, 325, { fit: 'cover', position: 'north' })
-    .composite([{ input: Buffer.from('<svg width="520" height="325"><rect x="0.5" y="0.5" width="519" height="324" rx="14" fill="none" stroke="#2a2a35" stroke-width="2"/></svg>') }])
-    .png().toBuffer();
-  const mask = Buffer.from('<svg width="520" height="325"><rect width="520" height="325" rx="14"/></svg>');
-  layers.push({ input: await sharp(shot).composite([{ input: mask, blend: 'dest-in' }]).png().toBuffer(), left: 620, top: 152 });
-} catch { console.log('Sem captura do site ainda (media-src/capturas/portfolio.png); capa gerada sem miniatura.'); }
-await sharp(bg).composite(layers).jpeg({ quality: 88 }).toFile('assets/og-image.jpg');
 // Imagem estática dos óculos (fallback sem WebGL), renderizada por tools/render-glasses.html.
 try {
   mkdirSync('assets/images/oculos', { recursive: true });
   await sharp('media-src/capturas/oculos-render.png').resize(900, 900).jpeg({ quality: 85 }).toFile('assets/images/oculos/oculos-render.jpg');
 } catch (e) { console.log('Sem captura para o fallback dos óculos.', e.message); }
 console.log('ok');
-
-
-
