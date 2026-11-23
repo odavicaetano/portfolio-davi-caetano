@@ -636,3 +636,35 @@ dialog { color: var(--text); }
  .projects-grid .project-card:nth-child(3) { animation-delay:.16s; }
  .projects-grid .project-card:nth-child(4) { animation-delay:.24s; }
 }
+
+/* Galerias: imagens preenchem os quadros, sem faixas laterais.
+   Helena: enquadramento editorial do rosto até o tronco na montagem branca. */
+.case-gallery .img-button,
+.teaching-case-group .case-gallery .img-button {
+  display:block; width:100%; height:auto; aspect-ratio:4/3;
+  overflow:hidden; padding:0; border-radius:12px;
+}
+.case-gallery .img-button picture { display:block; width:100%; height:100%; }
+.case-gallery .img-button img,
+.teaching-case-group .case-gallery .img-button img {
+  display:block; width:100%; height:100%; object-fit:cover !important;
+  object-position:center center; background:transparent;
+}
+.teaching-case-group .case-gallery .img-button { aspect-ratio:16/9; }
+.case-hero .img-button { display:block; width:100%; height:100%; }
+.case-hero .img-button img { width:100%; height:100%; object-fit:cover; }
+.case-hero:has(img[src*="estatua-angulos-modelo"]) img,
+.case-gallery img[src*="estatua-angulos-modelo"] {
+  object-fit:cover !important;
+  object-position:50% 8% !important;
+  background:#f7f7f5;
+}
+.case-gallery .img-button:has(img[src*="helena-3d"]) { background:#15161a; }
+.case-gallery img[src*="helena-3d"] { object-fit:cover !important; }
+.case-gallery img[src*="memorial-estatua-original"] { object-position:50% 30%; }
+.case-gallery img[src*="estatua-angulos-referencia"] { object-position:50% 24%; }
+@media(max-width:720px) {
+ .case-gallery .img-button { aspect-ratio:4/3; }
+ .case-hero:has(img[src*="estatua-angulos-modelo"]) { aspect-ratio:16/10; }
+ .case-hero:has(img[src*="estatua-angulos-modelo"]) img { object-position:50% 5% !important; }
+}
