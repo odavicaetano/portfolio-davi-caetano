@@ -591,9 +591,9 @@ dialog { color: var(--text); }
 .case-close { position: absolute; top: clamp(.65rem, 2vw, 1.15rem); right: clamp(.65rem, 2vw, 1.15rem); z-index: 15; background: rgba(12, 13, 19, .85); border-color: rgba(255, 255, 255, .22); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .case-close:hover { transform: rotate(90deg); }
 .case-close svg { transition: transform .5s var(--ease-out); }
-.case-hero { width: 100%; overflow: hidden; background: #101116; }
+.case-hero { width: 100%; overflow: hidden; }
 .case-hero > .img-button { display: block; width: 100%; height: auto; }
-.case-hero > .img-button img { display: block; width: 100%; height: auto; max-height: min(72dvh, 780px); object-fit: contain; object-position: center; }
+.case-hero > .img-button img { display: block; width: 100%; height: auto; }
 @media (prefers-reduced-motion: no-preference) {
   .case-dialog[open] .case-hero img { animation: hero-zoom 1.4s var(--ease-out); }
   .case-dialog[open] .case-body > * { animation: rise-in .9s var(--ease-out) both; }
@@ -618,12 +618,12 @@ dialog { color: var(--text); }
 .case-aside { display: grid; gap: 1.5rem; align-content: start; padding: 1.5rem; border-radius: 18px; background: rgba(8, 8, 11, .5); border: 1px solid var(--border-soft); position: sticky; top: 1rem; }
 .case-aside .case-block + .case-block { margin-top: 0; }
 .case-aside p { font-size: .86rem; }
-.case-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
-.case-gallery figure { display: flex; flex-direction: column; gap: .6rem; min-width: 0; margin: 0; }
-.case-gallery figure > .img-button { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; border: 1px solid var(--border-soft); background: #15161a; }
-.case-gallery .img-button picture { display: block; width: 100%; height: 100%; }
-.case-gallery .img-button img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-out); }
-.case-gallery .img-button:hover img { transform: scale(1.05); }
+/* Galeria em colunas: cada box segue a proporção da própria imagem, sem margens nem recortes */
+.case-gallery { columns: 3; column-gap: 1.1rem; }
+.case-gallery figure { display: flex; flex-direction: column; gap: .6rem; min-width: 0; margin: 0 0 1.4rem; break-inside: avoid; }
+.case-gallery figure > .img-button { position: relative; display: block; width: 100%; height: auto; border-radius: 14px; overflow: hidden; border: 1px solid var(--border-soft); }
+.case-gallery .img-button img { display: block; width: 100%; height: auto; transition: transform .9s var(--ease-out); }
+.case-gallery .img-button:hover img { transform: scale(1.04); }
 .case-gallery .img-button::after { content: '+'; position: absolute; right: .6rem; bottom: .6rem; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: rgba(8, 8, 11, .75); color: #fff; font: 400 1.1rem/1 var(--font-body); opacity: 0; transform: scale(.6); transition: opacity .3s, transform .4s var(--ease-out); }
 .case-gallery .img-button:hover::after, .case-gallery .img-button:focus-visible::after { opacity: 1; transform: scale(1); }
 .case-gallery figcaption { font-size: .76rem; color: var(--muted); line-height: 1.55; padding: 0 .1rem; overflow-wrap: anywhere; }
@@ -631,12 +631,7 @@ dialog { color: var(--text); }
 .teaching-case-groups { display: grid; gap: clamp(2.25rem, 5vw, 3.5rem); }
 .teaching-case-group { display: flex; flex-direction: column; gap: 1.15rem; }
 .teaching-case-group > h3 { font: 700 clamp(1.25rem, 2.2vw, 1.8rem)/1.25 var(--font-display); color: #fff; margin: 0; overflow-wrap: break-word; }
-.teaching-case-group .case-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.teaching-case-group .case-gallery figure > .img-button { aspect-ratio: 16 / 9; }
-/* Helena: enquadramento das montagens com fundo claro */
-.case-gallery img[src*="estatua-angulos-modelo"] { object-position: 50% 8% !important; background: #f7f7f5; }
-.case-gallery img[src*="memorial-estatua-original"] { object-position: 50% 30%; }
-.case-gallery img[src*="estatua-angulos-referencia"] { object-position: 50% 24%; }
+.teaching-case-group .case-gallery { columns: 2; }
 
 /* ---------- Lightbox ---------- */
 .lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(5, 5, 7, .97); overflow: hidden; }
@@ -725,8 +720,7 @@ dialog { color: var(--text); }
   .case-shell { max-height: calc(100dvh - 1rem); }
   .case-body { padding: 1.4rem 1.1rem 2rem; gap: 1.75rem; }
   .case-cols { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
-  .case-gallery, .teaching-case-group .case-gallery { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .9rem; }
-  .case-hero > .img-button img { max-height: 58dvh; }
+  .case-gallery, .teaching-case-group .case-gallery { columns: 2; column-gap: .9rem; }
   .lb-prev, .lb-next { top: auto; bottom: 1rem; transform: none; }
   .lb-prev:hover, .lb-next:hover { transform: scale(1.06); }
   .lb-caption { padding: .75rem 4rem 0; font-size: .82rem; }
@@ -738,7 +732,7 @@ dialog { color: var(--text); }
   .stats { grid-template-columns: 1fr 1fr; }
   .stats > div:last-child { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--border-soft); }
   .process { grid-template-columns: 1fr; }
-  .case-gallery, .teaching-case-group .case-gallery { grid-template-columns: minmax(0, 1fr); }
+  .case-gallery, .teaching-case-group .case-gallery { columns: 1; }
 }
 @media (hover: none) {
   .project-card:hover, .about-teaching:hover, .btn:hover, .social a:hover, .process li:hover, .tool-cloud li:hover { transform: none; }
