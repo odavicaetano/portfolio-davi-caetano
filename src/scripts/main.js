@@ -54,14 +54,20 @@ function cardHtml(p) {
 }
 
 function renderCards() {
-  grid.innerHTML = projects.map(cardHtml).join('');
+  grid.innerHTML = projects.filter(p => p.id !== 'docencia').map(cardHtml).join('');
+  const teaching = projects.find(p => p.id === 'docencia');
+  const preview = $('#teachingPreview');
+  if (teaching && preview) {
+    const cover = m(teaching.id, teaching.cover);
+    if (cover) preview.innerHTML = picture(cover, teaching.title);
+  }
 }
 
 /* ---------- Filtros ---------- */
 const filtersEl = $('#projectFilters');
 function renderFilters() {
   filtersEl.innerHTML = categories.map(c => {
-    const n = c.id === 'all' ? projects.length : projects.filter(p => p.categories.includes(c.id)).length;
+    const n = c.id === 'all' ? projects.filter(p => p.id !== 'docencia').length : projects.filter(p => p.id !== 'docencia' && p.categories.includes(c.id)).length;
     return `<button class="chip ${c.id === 'all' ? 'is-active' : ''}" data-filter="${c.id}" aria-pressed="${c.id === 'all'}">${esc(c.label)}<span class="count">${n}</span></button>`;
   }).join('');
 }
