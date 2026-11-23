@@ -29,7 +29,16 @@ export async function init(container) {
   scene.add(shadow);
 
   const r = Math.hypot(size.x, size.y, size.z) / 2;
-  const place = () => { camera.position.set(0, 0.35, fitDistance(camera, r, 1.12)); camera.lookAt(0, -0.22, 0); };
+  // Enquadra pela caixa real dos óculos: em palcos largos, eles ocupam a largura disponível
+  // sem cortar a rotação nem o "aceno"; em palcos quadrados o resultado é o mesmo de antes.
+  const place = () => {
+    const vF = camera.fov * Math.PI / 180;
+    const hF = 2 * Math.atan(Math.tan(vF / 2) * camera.aspect);
+    const rh = Math.hypot(size.x, size.z) / 2;
+    const rv = size.y / 2 + 0.35;
+    const d = Math.max(rh * 1.05 / Math.tan(hF / 2), rv * 1.25 / Math.tan(vF / 2), fitDistance(camera, r, 1.12) * 0.55) + rh * 0.35;
+    camera.position.set(0, 0.35, d); camera.lookAt(0, -0.22, 0);
+  };
   place();
   new ResizeObserver(place).observe(container);
 
