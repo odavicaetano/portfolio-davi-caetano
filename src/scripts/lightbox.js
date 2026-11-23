@@ -12,16 +12,23 @@ const next = document.getElementById('lbNext');
 let items = [];
 let index = 0;
 let returnFocus = null;
+let loadToken = 0;
 
 function show(i) {
+  const previousIndex = index;
+  const changing = items.length > 1 && i !== previousIndex;
+  const direction = i > previousIndex ? "gallery-next" : "gallery-prev";
   index = (i + items.length) % items.length;
+  const token = ++loadToken;
+  img.classList.remove("gallery-next", "gallery-prev");
+  if (changing) { void img.offsetWidth; img.classList.add(direction); }
   const it = items[index];
   img.classList.remove('is-loaded');
   err.hidden = true;
   spinner.hidden = false;
   img.alt = it.alt || it.caption || '';
-  img.onload = () => { spinner.hidden = true; img.classList.add('is-loaded'); };
-  img.onerror = () => { spinner.hidden = true; err.hidden = false; };
+  img.onload = () => { if (token !== loadToken) return; spinner.hidden = true; img.classList.add('is-loaded'); };
+  img.onerror = () => { if (token !== loadToken) return; spinner.hidden = true; err.hidden = false; };
   img.src = it.full;
   cap.textContent = it.caption || '';
   const many = items.length > 1;
@@ -34,6 +41,7 @@ function show(i) {
 export function openLightbox(list, start = 0) {
   items = list;
   returnFocus = document.activeElement;
+  index = start;
   show(start);
   if (!dlg.open) dlg.showModal();
   document.body.classList.add('no-scroll');
