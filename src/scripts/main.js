@@ -334,7 +334,7 @@ function onScroll() {
     parallax.forEach(el => {
       const r = el.parentElement.getBoundingClientRect();
       if (r.bottom < 0 || r.top > innerHeight) return;
-      el.style.setProperty('--py', `${((r.top + r.height / 2 - innerHeight / 2) * -0.12).toFixed(1)}px`);
+      el.style.setProperty('--py', `${((r.top + r.height / 2 - innerHeight / 2) * -0.06).toFixed(1)}px`);
     });
   }
   ticking = false;
