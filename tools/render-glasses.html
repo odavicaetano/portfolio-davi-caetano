@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<!-- Página auxiliar para gerar a imagem de reserva dos óculos (captura com navegador headless, 900x900). -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="../src/styles/main.css">
+<style>body{margin:0;background:#16161c}#hero3DContainer{position:fixed;inset:0}</style></head>
+<body>
+<div id="hero3DContainer" class="viewer-canvas"></div>
+<script type="module">
+  import { init } from '../src/scripts/viewer-glasses.js';
+  init(document.getElementById('hero3DContainer'));
+</script>
+</body></html>

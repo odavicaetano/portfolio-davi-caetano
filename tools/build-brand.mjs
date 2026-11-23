@@ -51,12 +51,12 @@ try {
   layers.push({ input: await sharp(shot).composite([{ input: mask, blend: 'dest-in' }]).png().toBuffer(), left: 620, top: 152 });
 } catch { console.log('Sem captura do site ainda (media-src/capturas/portfolio.png); capa gerada sem miniatura.'); }
 await sharp(bg).composite(layers).jpeg({ quality: 88 }).toFile('assets/og-image.jpg');
-// Imagem estática dos óculos (fallback sem WebGL), recortada da captura do site.
+// Imagem estática dos óculos (fallback sem WebGL), renderizada por tools/render-glasses.html.
 try {
   mkdirSync('assets/images/oculos', { recursive: true });
-  await sharp('media-src/capturas/portfolio.png').extract({ left: 803, top: 222, width: 515, height: 420 })
-    .resize(900, 900, { fit: 'contain', background: '#16161c' }).jpeg({ quality: 85 }).toFile('assets/images/oculos/oculos-render.jpg');
+  await sharp('media-src/capturas/oculos-render.png').resize(900, 900).jpeg({ quality: 85 }).toFile('assets/images/oculos/oculos-render.jpg');
 } catch (e) { console.log('Sem captura para o fallback dos óculos.', e.message); }
 console.log('ok');
+
 
 

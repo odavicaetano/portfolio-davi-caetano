@@ -13,6 +13,7 @@ const types = {
   '.glb': 'model/gltf-binary', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml',
 };
 createServer(async (req, res) => {
+  if (process.env.LOG) console.log(req.url);
   let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   if (path.endsWith('/')) path += 'index.html';
   const file = normalize(join(root, path));

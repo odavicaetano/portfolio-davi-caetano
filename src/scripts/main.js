@@ -218,6 +218,8 @@ brand.addEventListener('mouseenter', () => {
 /* ---------- 3D sob demanda ---------- */
 function whenVisible(el, cb, margin = '200px') {
   if (!el) return;
+  const r = el.getBoundingClientRect();
+  if (r.bottom > 0 && r.top < innerHeight) { cb(); return; } // já está na tela
   const io = new IntersectionObserver(entries => {
     if (entries.some(e => e.isIntersecting)) { io.disconnect(); cb(); }
   }, { rootMargin: margin });
@@ -231,8 +233,14 @@ const hero = $('#hero3DContainer');
 const statue = $('#statue3DContainer');
 // O hero mostra primeiro uma imagem dos óculos; o 3D entra depois que a página carregou.
 const afterLoad = fn => {
-  const go = () => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 600));
-  document.readyState === 'complete' ? go() : addEventListener('load', go, { once: true });
+  let done = false;
+  const run = () => { if (!done) { done = true; fn(); } };
+  const go = () => {
+    if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 1500 });
+    setTimeout(run, 1800); // garantia caso o navegador nunca fique ocioso
+  };
+  if (document.readyState === 'complete') go();
+  else { addEventListener('load', go, { once: true }); setTimeout(run, 6000); }
 };
 if (webglOk()) {
   afterLoad(() => whenVisible(hero, () => import('./viewer-glasses.js').then(mod => mod.init(hero)).catch(showFallback), '0px'));
@@ -254,5 +262,7 @@ renderFilters();
 renderCards();
 applyFilter('all');
 route();
+
+
 
 
