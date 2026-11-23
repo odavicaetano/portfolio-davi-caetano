@@ -44,6 +44,7 @@ const list = [
   ['titanic', 'museu', C('titanic.png'), 'center'],
   ['assinatura', 'capa', A('facilitar a criação de assinaturas institucionais de e-mail.jpg'), 'contain'],
   ['assinatura', 'formulario', C('assinatura.png'), 'top'],
+  ['engefril', 'capa', C('engefril-capa.webp'), 'left'],
   ['engefril', 'inicio', C('engefril.png'), 'center'],
   ['guia-de-helena', 'capa', A('Guia de Helena.jpg'), 'center'],
   ['docencia', 'turma-multimidia', A('professor da turma do Técnico em Multimídia..jpg'), 'center'],

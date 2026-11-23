@@ -8,6 +8,8 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 const HIDDEN_FROM_GRID = ['docencia', 'helena-3d'];
+const TOP_ORDER = ['titanic', 'engefril'];
+const topRank = id => { const i = TOP_ORDER.indexOf(id); return i < 0 ? TOP_ORDER.length : i; };
 
 /* ---------- Imagens ---------- */
 const m = (proj, id) => media[proj]?.[id];
@@ -39,7 +41,7 @@ function cardHtml(p, i) {
   const coverCaption = p.gallery.find(g => g[0] === p.cover)?.[1] || p.title;
   const tags = `<div class="tags"><span class="tag tag-${p.status}">${statusLabel[p.status]}</span>${p.period ? `<span class="tag">${esc(p.period)}</span>` : ''}</div>`;
   const mediaHtml = cover
-    ? `<div class="card-media" data-cursor="Ampliar"><button class="img-button" data-gallery="${p.id}" aria-label="Ampliar imagens de ${esc(p.title)}"><img src="${cover.full}" alt="${esc(coverCaption)}" width="${cover.w}" height="${cover.h}" loading="lazy" decoding="async"></button>${tags}</div>`
+    ? `<div class="card-media" data-cursor="Ampliar"><button class="img-button" data-gallery="${p.id}" aria-label="Ampliar imagens de ${esc(p.title)}"><img src="${cover.full}" alt="${esc(coverCaption)}" width="${cover.w}" height="${cover.h}" loading="lazy" decoding="async"${cover.pos && cover.pos !== 'center' ? ` style="object-position:${objPos[cover.pos]}"` : ''}></button>${tags}</div>`
     : `<div class="card-media ${p.anchorCover ? '' : 'is-placeholder'}">${p.anchorCover ? `<a class="img-button" href="${p.anchor}" aria-label="Ir para o visualizador 3D">${picture(p.anchorCover, 'Renderização do modelo 3D da estátua de Helena Antipoff.')}</a>` : '<span class="placeholder-mark" aria-hidden="true">3D</span>'}${tags}</div>`;
   const actions = [];
   if (p.anchor) actions.push(`<a class="link-action primary" href="${p.anchor}">Abrir visualizador 3D ${icons.case}</a>`);
@@ -60,7 +62,8 @@ function cardHtml(p, i) {
 
 const gridProjects = () => projects
   .filter(p => !HIDDEN_FROM_GRID.includes(p.id))
-  .sort((a, b) => (a.id === 'titanic' ? -1 : b.id === 'titanic' ? 1 : 0));
+  // Titanic abre a grade e o ENGEFRIL 3D vem logo depois; o resto segue a ordem de projects.js.
+  .sort((a, b) => topRank(a.id) - topRank(b.id));
 
 function renderCards() {
   grid.innerHTML = gridProjects().map(cardHtml).join('');

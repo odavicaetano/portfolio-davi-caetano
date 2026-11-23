@@ -223,6 +223,13 @@ export default {
     }
   },
   "engefril": {
+    "capa": {
+      "full": "assets/images/engefril/capa.jpg",
+      "w": 1672,
+      "h": 941,
+      "thumb": "assets/images/engefril/capa-thumb",
+      "pos": "left"
+    },
     "inicio": {
       "full": "assets/images/engefril/inicio.jpg",
       "w": 1440,

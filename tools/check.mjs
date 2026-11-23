@@ -16,7 +16,7 @@ for (const [, ref] of html.matchAll(/(?:src|href|srcset|data-src|data-full)="([^
 // 2. Mídias geradas.
 let count = 0, bytes = 0;
 for (const proj of Object.values(media)) for (const m of Object.values(proj)) {
-  for (const f of [m.full, `${m.thumb}.webp`, `${m.thumb}.jpg`]) {
+  for (const f of m.thumb ? [m.full, `${m.thumb}.webp`, `${m.thumb}.jpg`] : [m.full]) {
     if (!existsSync(f)) problems.push(`Mídia ausente: ${f}`); else { count++; bytes += statSync(f).size; }
   }
 }
