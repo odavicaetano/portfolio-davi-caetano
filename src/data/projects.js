@@ -47,12 +47,17 @@ export const projects = [
     featured: true,
     
     summary: 'Do memorial físico à reconstrução digital: um projeto de aproximadamente um ano dedicado à preservação da memória de Helena Antipoff.',
-    cover: 'render',
-    gallery: [['render', 'Reconstrução tridimensional da estátua de Helena Antipoff.']],
+    cover: 'angulos-modelo',
+    gallery: [
+      ['angulos-modelo', 'Reconstrução digital: vistas frontal, posterior e laterais da escultura.'],
+      ['memorial', 'Estátua original no memorial da Fundação Helena Antipoff.'],
+      ['angulos-referencia', 'Fotografias da escultura física utilizadas como referências de diferentes ângulos.'],
+      ['render', 'Renderização tridimensional do projeto.'],
+    ],
     sections: { contexto: 'A escultura de Helena Antipoff integra um memorial em área ajardinada da Fundação Helena Antipoff. O projeto buscou preservar e ampliar o acesso a esse patrimônio por meio de uma reconstrução digital, desenvolvida ao longo de aproximadamente um ano com a FHA e o Fab Lab FHA.', papel: 'Participação no processo de reconstrução digital da escultura, utilizando recursos de inteligência artificial e Blender em colaboração com a equipe.', processo: 'Fotografias da estátua original, incluindo vistas frontal, posterior e laterais, serviram como referência para observar proporções, vestimenta e detalhes da escultura. O trabalho combinou recursos de inteligência artificial, modelagem e refinamento no Blender até chegar a um modelo explorável no navegador.', entregas: ['Reconstrução digital da estátua', 'Modelo 3D interativo para exploração no navegador'] },
     tools: ['Blender', 'Inteligência artificial aplicada ao processo de modelagem'],
     links: [],
-    sources: ['OBJ fornecido pelo autor', 'Participação da FHA e do Fab Lab FHA conforme briefing do autor (perfil do LinkedIn)'],
+    sources: [],
   },
   {
     id: 'reurb',
