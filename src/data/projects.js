@@ -33,7 +33,7 @@ export const statusLabel = {
   concluido: 'Concluído',
   prototipo: 'Protótipo',
   colaborativo: 'Colaborativo',
-  'a-confirmar': 'Escopo a confirmar',
+  'a-confirmar': 'Projeto',
 };
 
 export const projects = [
@@ -96,7 +96,7 @@ export const projects = [
       contexto: 'Ferramenta gratuita para criar QR Codes personalizados sem cadastro, pensada para quem precisa de um código com cara de marca.',
       desafio: 'Reunir em uma interface simples os ajustes que normalmente ficam espalhados: tipo de conteúdo, cores, estilo, logotipo, moldura, legenda e formato de saída.',
       papel: 'Projeto autoral: interface, desenvolvimento e publicação.',
-      processo: 'Aplicação de página única em HTML, CSS e JavaScript, com pré-visualização em tempo real. Tem manifesto e service worker, o que permite instalar no computador ou no celular pelo navegador.',
+      processo: 'Interface com pré-visualização em tempo real, opções de personalização e instalação pelo navegador no computador ou celular.',
       entregas: ['Editor com pré-visualização ao vivo', 'Conteúdos: link, WhatsApp, Wi-Fi, contato e texto', 'Exportação em SVG, PNG e JPEG', 'Instalação pelo navegador (PWA)'],
     },
     tools: ['HTML', 'CSS', 'JavaScript', 'PWA'],
@@ -124,7 +124,7 @@ export const projects = [
       contexto: 'Projeto pessoal de divulgação histórica: uma visita interativa ao RMS Titanic que roda direto no navegador, também no celular.',
       desafio: 'Equilibrar um modelo 3D detalhado com desempenho na web e manter cuidado histórico, deixando claro o que é reconstrução.',
       papel: 'Projeto autoral: concepção, desenvolvimento, curadoria de imagens históricas e publicação.',
-      processo: 'Página única em three.js, gerada a partir de módulos-fonte por um script de build. Inclui caminhada em primeira pessoa pelos conveses (com malha de navegação medida no próprio modelo), fichas com imagens históricas creditadas, gerador de ingressos e funcionamento offline como PWA. As marcações azuis de acesso entre áreas são identificadas no próprio museu como recursos de navegação, não como escadas históricas.',
+      processo: 'Uma experiência imersiva que permite conhecer o navio, explorar ambientes internos, consultar informações históricas e criar ingressos personalizados. Disponível no computador e no celular.',
       entregas: ['Navio completo e dez conveses', 'Cinco cenários internos visitáveis', 'Simuladores e gerador de ingressos', 'PWA instalável e offline'],
     },
     tools: ['three.js', 'JavaScript', 'Node.js (build)', 'PWA'],
@@ -144,7 +144,7 @@ export const projects = [
     period: '',
     featured: false,
     anchor: '#helena-3d',
-    summary: 'Reconstrução digital da estátua de Helena Antipoff, em projeto colaborativo com a FHA e o Fab Lab FHA. O modelo pode ser explorado no visualizador desta página.',
+    summary: 'Reconstrução digital da estátua de Helena Antipoff, em projeto colaborativo com a FHA e o Fab Lab FHA. Explore a escultura digital interativa nesta página.',
     cover: null,
     gallery: [],
     sections: {},
@@ -231,7 +231,7 @@ export const projects = [
       contexto: 'Ferramenta criada para facilitar a criação de assinaturas institucionais de e-mail. A versão pública usa dados de exemplo.',
       desafio: 'Garantir que todas as assinaturas sigam a mesma identidade, mesmo preenchidas por pessoas diferentes.',
       papel: 'Interface e desenvolvimento.',
-      processo: 'HTML, CSS e JavaScript, com campos guiados, formatação automática, prévia ao vivo e exportação em JPG. Interface responsiva e instalável (manifesto e service worker).',
+      processo: 'Campos guiados, formatação automática e prévia ao vivo para facilitar a criação de assinaturas padronizadas.',
       entregas: ['Formulário guiado', 'Prévia ao vivo', 'Exportação em JPG'],
     },
     tools: ['HTML', 'CSS', 'JavaScript', 'PWA'],
@@ -240,32 +240,6 @@ export const projects = [
       { label: 'Código', href: 'https://github.com/odavicaetano/Gerador-de-assinatura-de-E-mail-Exemplo', kind: 'code' },
     ],
     sources: ['Descrição e arquivos do repositório público', 'Aplicação aberta em 22/11/2026'],
-  },
-  {
-    id: 'engefril',
-    title: 'ENGEFRIL 3D: refrigeração industrial interativa',
-    kicker: 'Protótipo demonstrativo',
-    categories: ['3d', 'digital'],
-    status: 'prototipo',
-    period: '2026',
-    featured: false,
-    summary: 'Protótipo de visualização 3D, ensino e pré-dimensionamento de refrigeração por amônia (R717). Sem vínculo oficial com a Engefril.',
-    cover: 'inicio',
-    gallery: [['inicio', 'Tela inicial com os modos comercial, aprendizado e técnico.']],
-    sections: {
-      contexto: 'Experimento autoral que usa a Engefril como referência pública para explicar sistemas de refrigeração industrial por amônia.',
-      desafio: 'Mostrar um sistema complexo de forma visual e, ao mesmo tempo, deixar claro de onde vem cada número.',
-      papel: 'Projeto autoral: concepção e desenvolvimento.',
-      processo: 'Cena 3D com sala de máquinas e câmara frigorífica, três modos de uso, comparador de cenários, relatórios em PDF A4 e importação de desenhos CAD. Cada valor é rotulado como oficial, referência externa, calculado ou hipótese.',
-      entregas: ['Cena 3D interativa', 'Modos comercial, aprendizado e técnico', 'Relatórios PDF e planilhas'],
-    },
-    tools: ['React', 'TypeScript', 'three.js', 'Vite'],
-    credits: 'Não tem vínculo, parceria nem aprovação oficial da Engefril. O uso do símbolo em produção exige autorização do titular.',
-    links: [
-      { label: 'Ver protótipo', href: 'https://odavicaetano.github.io/engefril-3d/', kind: 'live' },
-      { label: 'Código', href: 'https://github.com/odavicaetano/engefril-3d', kind: 'code' },
-    ],
-    sources: ['README do repositório', 'Protótipo aberto em 22/11/2026'],
   },
   {
     id: 'guia-de-helena',
@@ -286,7 +260,7 @@ export const projects = [
     credits: 'Ilustrações de Felipe Fivo, conforme publicação no LinkedIn citada pelo autor.',
     links: [],
     sources: ['Imagem fornecida pelo autor'],
-    pending: 'Escopo individual, período e créditos completos a confirmar.',
+
   },
   {
     id: 'fha-eventos',
@@ -315,7 +289,7 @@ export const projects = [
     tools: [],
     links: [],
     sources: ['Fotos e legendas de publicações fornecidas pelo autor'],
-    pending: 'Datas exatas de cada função na FHA a confirmar.',
+
   },
   {
     id: 'docencia',
@@ -347,6 +321,6 @@ export const projects = [
     credits: 'Fotos com estudantes e participantes: uso sujeito à autorização de imagem.',
     links: [],
     sources: ['Fotos e legendas de publicações fornecidas pelo autor', 'Período do PRONATEC conforme portfólio anterior'],
-    pending: 'Instituição e data de cada palestra a confirmar.',
+
   },
 ];
