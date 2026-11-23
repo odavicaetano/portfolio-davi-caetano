@@ -95,7 +95,9 @@ function layoutGrid(cat) {
     const featured = cat === 'all' && p.featured;
     card.classList.toggle('is-featured', featured);
     card.classList.remove('span-3', 'is-wide', 'is-flip');
-    if (featured) { card.classList.toggle('is-flip', featuredCount % 2 === 1); featuredCount++; }
+    // Titanic e ENGEFRIL 3D sempre com a imagem à esquerda; os demais destaques alternam depois deles.
+    if (featured && TOP_ORDER.includes(p.id)) card.classList.remove('is-flip');
+    else if (featured) { card.classList.toggle('is-flip', featuredCount % 2 === 0); featuredCount++; }
     else regular.push(card);
   });
   if (cols === 3) {
