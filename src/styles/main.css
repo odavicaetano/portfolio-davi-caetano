@@ -519,3 +519,25 @@ dialog { color: var(--text); }
 .case-gallery img[src*="helena-3d"] { object-fit: contain !important; }
 .case-hero:has(img[src*="estatua-angulos-modelo"]) img { object-fit: contain !important; background: #f7f7f5; }
 @media(max-width:800px) { .helena-intro { grid-template-columns: 1fr; } .helena-reference-gallery { grid-template-columns: 1fr; } }
+
+/* Retorno à composição da primeira versão: óculos abaixo do título, dentro do cartão */
+.hero-name-lockup .hero-glasses { display:none !important; }
+.hero-vision { margin: 2rem 0 2rem; max-width: 620px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; background: rgba(24,24,31,.72); }
+.hero-vision-header,.hero-vision-footer { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 1.25rem; }
+.hero-vision-header { border-bottom:1px solid rgba(255,255,255,.08); }
+.hero-vision-footer { border-top:1px solid rgba(255,255,255,.08); }
+.hero-vision-footer strong { color:#fff; font-size:1.1rem; }
+.hero-vision-footer p { margin:.3rem 0 0; }
+.vision-dot { display:inline-block; width:8px; height:8px; margin-right:7px; border-radius:50%; background:#00f2fe; }
+.hero-vision-stage { position:relative; height:clamp(260px,32vw,380px); display:flex; justify-content:center; align-items:center; overflow:hidden; background:radial-gradient(circle at center,rgba(99,102,241,.12),transparent 67%); }
+.hero-vision-orb { position:absolute; width:min(65%,310px); aspect-ratio:1; border:1px solid rgba(99,102,241,.4); border-radius:50%; background:repeating-linear-gradient(0deg,transparent 0 16px,rgba(99,102,241,.11) 17px 18px),repeating-linear-gradient(90deg,transparent 0 16px,rgba(99,102,241,.1) 17px 18px); box-shadow:0 0 75px rgba(99,102,241,.12),inset 0 0 65px rgba(0,242,254,.06); pointer-events:none; transform:rotate(-16deg); }
+.hero-vision .hero-glasses { display:block !important; position:relative !important; flex:none !important; width:100% !important; height:100% !important; margin:0 !important; align-self:auto !important; max-width:none !important; }
+.hero-vision .hero-glasses .viewer-canvas { position:absolute !important; inset:0 !important; width:100%; height:100%; }
+.hero-vision .hero-glasses .viewer-fallback { object-fit:contain; }
+#helena-3d .statue-layout { display:block; }
+#helena-3d .statue-viewer { width:100%; }
+#helena-3d .statue-canvas { min-height: min(70vh,700px); }
+.helena-below { max-width:780px; margin:2rem auto 0; }
+.helena-below .statue-info { width:100%; }
+.helena-below .btn { margin-top:1.25rem; }
+@media(max-width:720px) { .hero-vision { margin:1.5rem 0; } .hero-vision-stage { height:300px; } .hero-vision-header,.hero-vision-footer { padding:.8rem 1rem; } #helena-3d .statue-canvas { min-height:440px; } }
