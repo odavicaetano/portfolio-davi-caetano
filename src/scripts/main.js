@@ -59,7 +59,7 @@ function renderCards() {
   const preview = $('#teachingPreview');
   if (teaching && preview) {
     const cover = m(teaching.id, teaching.cover);
-    if (cover) preview.innerHTML = picture(cover, teaching.title);
+    if (cover) preview.innerHTML = `<img src="${cover.full}" alt="Davi Caetano durante palestra sobre criatividade e inteligência artificial" loading="lazy" decoding="async">`;
   }
 }
 
@@ -122,7 +122,7 @@ function caseHtml(p) {
     p.credits && `<div class="case-block"><h3>Créditos</h3><p>${esc(p.credits)}</p></div>`,
     p.pending && `<div class="case-block"><h3>Pendência</h3><p><span class="tag tag-pending">A confirmar</span> ${esc(p.pending)}</p></div>`,
   ].filter(Boolean).join('');
-  const gallery = p.gallery.length > 1 ? `<div><div class="case-block"><h3>Galeria</h3></div><div class="case-gallery">${p.gallery.map(([id, c], i) => `
+  const gallery = p.id === 'docencia' ? `<div class="teaching-case-groups"><section class="teaching-case-group"><h3>Criatividade na Era da Inteligência Artificial: ferramenta ou muleta?</h3><div class="case-gallery">${[['palestra-ia-1','Palestra sobre criatividade e inteligência artificial'],['palestra-ia-2','Auditório da palestra']].map(([id,c])=>`<figure><button class="img-button" data-gallery="docencia" data-start="${id}" aria-label="Ampliar ${c}">${picture(m('docencia',id),c)}</button><figcaption>${c}</figcaption></figure>`).join('')}</div></section><section class="teaching-case-group"><h3>Inteligência Artificial: expanda sua criatividade!</h3><div class="case-gallery">${[['ia-criatividade-palco','Palestra no palco'],['ia-criatividade-publico','Público da palestra'],['ia-criatividade-grupo','Participantes'],['ia-criatividade-conversa','Conversa com o público']].map(([id,c])=>`<figure><button class="img-button" data-gallery="docencia" data-start="${id}" aria-label="Ampliar ${c}">${picture(m('docencia',id),c)}</button><figcaption>${c}</figcaption></figure>`).join('')}</div></section><section class="teaching-case-group"><h3>Aulas e formação em Multimídia</h3><div class="case-gallery">${[['turma-multimidia','Turma do Técnico em Multimídia'],['aula-eventos','Aula sobre tecnologia e criatividade em eventos']].map(([id,c])=>`<figure><button class="img-button" data-gallery="docencia" data-start="${id}" aria-label="Ampliar ${c}">${picture(m('docencia',id),c)}</button><figcaption>${c}</figcaption></figure>`).join('')}</div></section></div>` : p.gallery.length > 1 ? `<div><div class="case-block"><h3>Galeria</h3></div><div class="case-gallery">${p.gallery.map(([id, c], i) => `
       <figure><button class="img-button" data-gallery="${p.id}" data-start="${id}" aria-label="Ampliar imagem ${i + 1}: ${esc(c)}">${picture(m(p.id, id), c)}</button><figcaption>${esc(c)}</figcaption></figure>`).join('')}</div></div>` : '';
   return `
     ${cover ? `<div class="case-hero"><button class="img-button" data-gallery="${p.id}" aria-label="Ampliar capa"><img src="${cover.full}" alt="${esc(p.gallery[0]?.[1] || p.title)}" width="${cover.w}" height="${cover.h}" style="object-position:${objPos[cover.pos] || '50% 50%'}"></button></div>` : ''}
