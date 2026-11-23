@@ -15,6 +15,10 @@ const objPos = { center: '50% 50%', top: '50% 0%', left: '0% 50%', right: '100% 
 function picture(md, alt, { eager = false } = {}) {
   return md.thumb ? `<picture><source srcset="${md.thumb}.webp" type="image/webp"><img src="${md.thumb}.jpg" alt="${esc(alt)}" width="800" height="600" ${eager ? '' : 'loading="lazy"'} decoding="async" style="object-position:${objPos[md.pos] || '50% 50%'}"></picture>` : `<img src="${md.full}" alt="${esc(alt)}" ${eager ? '' : 'loading="lazy"'} decoding="async" style="object-position:${objPos[md.pos] || '50% 50%'}">`;
 }
+// Galerias dos cases: a imagem inteira, sem recorte, com o box na proporção real dela.
+function fitImage(md, alt) {
+  return `<img src="${md.full}" alt="${esc(alt)}" width="${md.w}" height="${md.h}" loading="lazy" decoding="async" style="aspect-ratio:${md.w} / ${md.h}">`;
+}
 const galleryItems = p => p.gallery.map(([id, caption]) => ({ full: m(p.id, id).full, caption, alt: caption }));
 
 /* ---------- Cards ---------- */
@@ -186,7 +190,7 @@ const sectionTitles = { contexto: 'Contexto', desafio: 'Desafio', papel: 'Meu pa
 let lastFocus = null;
 
 function teachingGroup(title, items) {
-  return `<section class="teaching-case-group"><h3>${title}</h3><div class="case-gallery">${items.map(([id, c]) => `<figure><button class="img-button" data-gallery="docencia" data-start="${id}" aria-label="Ampliar ${c}">${picture(m('docencia', id), c)}</button><figcaption>${c}</figcaption></figure>`).join('')}</div></section>`;
+  return `<section class="teaching-case-group"><h3>${title}</h3><div class="case-gallery">${items.map(([id, c]) => `<figure><button class="img-button" data-gallery="docencia" data-start="${id}" aria-label="Ampliar ${c}">${fitImage(m('docencia', id), c)}</button><figcaption>${c}</figcaption></figure>`).join('')}</div></section>`;
 }
 
 function caseHtml(p) {
@@ -206,10 +210,10 @@ function caseHtml(p) {
       }${teachingGroup('Aulas e formação em Multimídia', [['turma-multimidia', 'Turma do Técnico em Multimídia'], ['aula-eventos', 'Aula sobre tecnologia e criatividade em eventos']])}</div>`
     : p.gallery.length > 1
       ? `<div><div class="case-block"><h3>Galeria</h3></div><div class="case-gallery">${p.gallery.map(([id, c], i) => `
-      <figure><button class="img-button" data-gallery="${p.id}" data-start="${id}" aria-label="Ampliar imagem ${i + 1}: ${esc(c)}">${picture(m(p.id, id), c)}</button><figcaption>${esc(c)}</figcaption></figure>`).join('')}</div></div>`
+      <figure><button class="img-button" data-gallery="${p.id}" data-start="${id}" aria-label="Ampliar imagem ${i + 1}: ${esc(c)}">${fitImage(m(p.id, id), c)}</button><figcaption>${esc(c)}</figcaption></figure>`).join('')}</div></div>`
       : '';
   return `
-    ${cover ? `<div class="case-hero"><button class="img-button" data-gallery="${p.id}" aria-label="Ampliar capa"><img src="${cover.full}" alt="${esc(p.gallery[0]?.[1] || p.title)}" width="${cover.w}" height="${cover.h}" style="object-position:${objPos[cover.pos] || '50% 50%'}"></button></div>` : ''}
+    ${cover ? `<div class="case-hero"><button class="img-button" data-gallery="${p.id}" aria-label="Ampliar capa"><img src="${cover.full}" alt="${esc(p.gallery[0]?.[1] || p.title)}" width="${cover.w}" height="${cover.h}" style="aspect-ratio:${cover.w} / ${cover.h}"></button></div>` : ''}
     <div class="case-body">
       <header class="case-head">
         <p class="card-kicker">${esc(p.kicker)}</p>
