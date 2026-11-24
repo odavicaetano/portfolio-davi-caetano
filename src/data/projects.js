@@ -165,7 +165,7 @@ export const projects = [
     status: 'prototipo',
     period: '2026',
     featured: true,
-    summary: 'Plataforma no navegador para explorar a engenharia do frio: câmara frigorífica e sala de máquinas em 3D, ciclo por amônia (NH₃) e modos comercial, aprendizado e técnico.',
+    summary: 'Simulador de refrigeração industrial por amônia, com câmara frigorífica, sala de máquinas em 3D e três modos de exploração.',
     cover: 'capa',
     gallery: [
       ['capa', 'ENGEFRIL 3D: refrigeração industrial interativa, com os modos comercial, aprendizado e técnico.'],
