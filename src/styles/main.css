@@ -748,3 +748,12 @@ dialog { color: var(--text); }
   .aurora, .orbit, .contact-ring { animation: none !important; }
   .contact-ring { display: none; }
 }
+
+/* Destaques iniciais: mesma proporção e ritmo compacto, sem cortar conteúdo. */
+@media (min-width: 1025px) {
+ .project-card.is-featured:is([data-id="titanic"],[data-id="engefril"]) { grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); min-height:0; }
+ .project-card.is-featured:is([data-id="titanic"],[data-id="engefril"]) .card-body { padding:clamp(1.5rem,2.2vw,2.5rem); gap:.8rem; }
+ .project-card.is-featured:is([data-id="titanic"],[data-id="engefril"]) .card-title { min-height:2.1em; }
+ .project-card.is-featured:is([data-id="titanic"],[data-id="engefril"]) .card-summary { min-height:5.1em; }
+ .project-card.is-featured:is([data-id="titanic"],[data-id="engefril"]) .card-tools { min-height:2em; }
+}
