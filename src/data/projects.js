@@ -54,9 +54,9 @@ export const projects = [
       ['angulos-referencia', 'Fotografias da escultura física utilizadas como referências de diferentes ângulos.'],
       ['render', 'Renderização tridimensional do projeto.'],
     ],
-    sections: { contexto: 'A escultura de Helena Antipoff integra um memorial em área ajardinada da Fundação Helena Antipoff. O projeto buscou preservar e ampliar o acesso a esse patrimônio por meio de uma reconstrução digital, desenvolvida ao longo de aproximadamente um ano com a FHA e o Fab Lab FHA.', papel: 'Participação no processo de reconstrução digital da escultura, utilizando recursos de inteligência artificial e Blender em colaboração com a equipe.', processo: 'Fotografias da estátua original, incluindo vistas frontal, posterior e laterais, serviram como referência para observar proporções, vestimenta e detalhes da escultura. O trabalho combinou recursos de inteligência artificial, modelagem e refinamento no Blender até chegar a um modelo explorável no navegador.', entregas: ['Reconstrução digital da estátua', 'Modelo 3D interativo para exploração no navegador'] },
+    sections: { contexto: 'Localizada em Ibirité (MG), a estátua integra o memorial da Fundação Helena Antipoff e homenageia o legado histórico e educacional da psicóloga e educadora russo-brasileira Helena Antipoff (1892–1974). A reconstrução digital, desenvolvida ao longo de aproximadamente um ano com a FHA e o Fab Lab FHA, busca preservar e ampliar o acesso a esse patrimônio.', papel: 'Participação no processo de reconstrução digital da escultura, utilizando recursos de inteligência artificial e Blender em colaboração com a equipe.', processo: 'Fotografias da estátua original, incluindo vistas frontal, posterior e laterais, serviram como referência para observar proporções, vestimenta e detalhes da escultura. O trabalho combinou recursos de inteligência artificial, modelagem e refinamento no Blender até chegar a um modelo explorável no navegador.', entregas: ['Reconstrução digital da estátua', 'Modelo 3D interativo para exploração no navegador'] },
     tools: ['Blender', 'Inteligência artificial aplicada ao processo de modelagem'],
-    links: [],
+    links: [{ label: 'Ver localização do memorial', href: 'https://share.google/GNeOIM3MRaNBxXh34', kind: 'external' }],
     sources: [],
   },
   {
